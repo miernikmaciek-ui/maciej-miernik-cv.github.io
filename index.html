@@ -1,193 +1,636 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maciej Miernik - CV Online</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>Maciej Miernik - CV</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Crimson+Pro:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --sidebar-blue: #4a74d4;
-            --text-gray: #444;
-            --light-gray: #777;
+            --bg: #fafaf8;
+            --text: #1a1a1a;
+            --accent: #2c5f2d;
+            --muted: #666;
+            --border: #e0e0e0;
+            --mono: 'IBM Plex Mono', monospace;
+            --serif: 'Crimson Pro', serif;
         }
 
-        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; margin: 0; display: flex; background: #e9e9e9; color: var(--text-gray); }
-
-        /* --- SIDEBAR --- */
-        .sidebar { width: 320px; background-color: var(--sidebar-blue); color: white; min-height: 100vh; padding: 40px 30px; flex-shrink: 0; box-sizing: border-box; }
-        
-        .profile-pic { 
-            width: 180px; height: 180px; border-radius: 50%; 
-            background: #fff; margin: 0 auto 30px; border: 5px solid rgba(255,255,255,0.2);
-            overflow: hidden; display: flex; align-items: center; justify-content: center;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .profile-pic img { width: 100%; height: 100%; object-fit: cover; }
 
-        .sidebar h2 { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 40px; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 5px; margin-bottom: 15px; }
-        .contact-link { display: flex; align-items: center; margin-bottom: 12px; font-size: 0.85rem; text-decoration: none; color: white; }
-        .contact-link i { width: 25px; font-size: 1.1rem; margin-right: 10px; text-align: center; }
-        .side-list { list-style: none; padding: 0; margin: 0; font-size: 0.85rem; line-height: 1.6; }
-
-        /* --- MAIN CONTENT --- */
-        .main { flex-grow: 1; background: white; padding: 50px 60px; max-width: 900px; }
-        .header-top { display: flex; justify-content: space-between; align-items: flex-start; }
-        h1 { font-size: 3.5rem; margin: 0; color: #000; font-weight: bold; }
-        .lang-btns { display: flex; gap: 10px; }
-        .btn-lang { padding: 6px 15px; border: 2px solid var(--sidebar-blue); background: transparent; color: var(--sidebar-blue); cursor: pointer; font-weight: bold; border-radius: 4px; }
-        .btn-lang.active { background: var(--sidebar-blue); color: white; }
-
-        h3.section-header { color: var(--sidebar-blue); font-size: 1.2rem; text-transform: uppercase; margin-top: 40px; margin-bottom: 20px; letter-spacing: 1px; }
-        .profile-desc { font-size: 0.95rem; line-height: 1.5; margin-bottom: 30px; }
-
-        /* --- PORTFOLIO --- */
-        .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 20px; }
-        .portfolio-item { 
-            border: 1px solid #ddd; border-radius: 8px; overflow: hidden; height: 200px; 
-            background: #f9f9f9; display: flex; align-items: center; justify-content: center;
-            position: relative;
+        body {
+            font-family: var(--serif);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            font-size: 16px;
+            padding: 2rem 1rem;
+            max-width: 900px;
+            margin: 0 auto;
         }
-        .portfolio-item img { width: 100%; height: 100%; object-fit: cover; }
-        .portfolio-item span { position: absolute; bottom: 0; background: rgba(0,0,0,0.6); color: white; width: 100%; text-align: center; font-size: 0.8rem; padding: 5px 0; }
 
-        .exp-item { margin-bottom: 30px; }
-        .exp-title { font-weight: bold; font-size: 1.05rem; color: #000; }
-        .exp-meta { font-size: 0.8rem; color: var(--light-gray); text-transform: uppercase; margin: 4px 0 10px 0; }
-        .exp-desc { list-style: none; padding-left: 15px; font-size: 0.9rem; }
-        .exp-desc li::before { content: "-"; margin-right: 8px; }
+        .lang-switch {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            display: flex;
+            gap: 0.5rem;
+            z-index: 100;
+        }
 
-        @media (max-width: 850px) { body { flex-direction: column; } .sidebar { width: 100%; min-height: auto; } .main { padding: 30px; } .portfolio-grid { grid-template-columns: 1fr; } }
+        .lang-btn {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            padding: 0.4rem 0.8rem;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--muted);
+            cursor: pointer;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .lang-btn:hover {
+            border-color: var(--accent);
+            color: var(--text);
+        }
+
+        .lang-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        header {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 2rem;
+            margin-bottom: 3rem;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+
+        .subtitle {
+            font-family: var(--mono);
+            font-size: 0.9rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile {
+            font-size: 1.1rem;
+            color: var(--muted);
+            max-width: 700px;
+            line-height: 1.7;
+        }
+
+        .contact {
+            margin-top: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            font-family: var(--mono);
+            font-size: 0.85rem;
+        }
+
+        .contact a {
+            color: var(--text);
+            text-decoration: none;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 2px;
+            transition: border-color 0.2s;
+        }
+
+        .contact a:hover {
+            border-color: var(--accent);
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            animation: fadeIn 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .section:nth-child(2) { animation-delay: 0.1s; }
+        .section:nth-child(3) { animation-delay: 0.2s; }
+        .section:nth-child(4) { animation-delay: 0.3s; }
+        .section:nth-child(5) { animation-delay: 0.4s; }
+
+        h2 {
+            font-size: 0.85rem;
+            font-family: var(--mono);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .job {
+            margin-bottom: 2rem;
+        }
+
+        .job-header {
+            margin-bottom: 0.5rem;
+        }
+
+        .job-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .company {
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: var(--muted);
+        }
+
+        .job-meta {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.8rem;
+        }
+
+        .job-description {
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .job-description li {
+            margin-left: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-item {
+            padding: 0.8rem;
+            background: white;
+            border: 1px solid var(--border);
+            font-size: 0.95rem;
+            color: var(--text);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .licenses, .languages, .hobbies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .tag {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            padding: 0.5rem 1rem;
+            background: white;
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        .education {
+            padding: 1.5rem;
+            background: white;
+            border-left: 3px solid var(--accent);
+        }
+
+        .education-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .education-meta {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-details {
+            color: var(--muted);
+        }
+
+        footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--muted);
+            text-align: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .lang-switch {
+                top: 1rem;
+                right: 1rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
+    <div class="lang-switch">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="pl">PL</button>
+    </div>
 
-    <aside class="sidebar">
-        <div class="profile-pic">
-            <img src="profilowe.jpg" alt="Maciej Miernik">
-        </div>
-        
-        <h2 id="label-contact">Kontakt</h2>
-        <a href="tel:+48665571260" class="contact-link"><i class="fas fa-phone"></i> +48 665 571 260</a>
-        <a href="mailto:miernik.maciek@gmail.com" class="contact-link"><i class="fas fa-envelope"></i> miernik.maciek@gmail.com</a>
-        <div class="contact-link"><i class="fas fa-map-marker-alt"></i> Szczecin, Polska</div>
-        <a href="#" class="contact-link"><i class="fab fa-linkedin"></i> Maciej Miernik</a>
-        <a href="#" class="contact-link"><i class="fab fa-instagram"></i> Mackezzy Wheel Builder</a>
-
-        <h2 id="label-udt">UDT</h2>
-        <ul id="list-udt" class="side-list"></ul>
-
-        <h2 id="label-skills">Umiejętności</h2>
-        <ul id="list-skills" class="side-list"></ul>
-
-        <h2 id="label-lang">Języki</h2>
-        <ul id="list-languages" class="side-list"></ul>
-
-        <h2 id="label-hobbies">Zainteresowania</h2>
-        <ul id="list-hobbies" class="side-list"></ul>
-    </aside>
-
-    <main class="main">
-        <div class="header-top">
+    <!-- ENGLISH VERSION -->
+    <div class="content" data-content="en">
+        <header>
             <h1>Maciej Miernik</h1>
-            <div class="lang-btns">
-                <button class="btn-lang active" onclick="changeLang('pl', event)">PL</button>
-                <button class="btn-lang" onclick="changeLang('en', event)">EN</button>
+            <div class="subtitle">Mackezzy Wheel Builder</div>
+            <p class="profile">
+                Assembler and mechanic with 12 years of experience in Poland and Scandinavia. Specialist in power hydraulics, advanced bicycle servicing, and precision mechanics. From building systems for wind energy to renovating classic Porsches - in my work, I rely on precise technical drawings, attention to detail, and health and safety standards.
+            </p>
+            <div class="contact">
+                <a href="tel:+48665571260">+48 665 571 260</a>
+                <a href="mailto:miernik.maciek@gmail.com">miernik.maciek@gmail.com</a>
+                <span>Szczecin, Poland</span>
             </div>
-        </div>
+        </header>
 
-        <h3 class="section-header" id="label-profile">O Mnie</h3>
-        <p class="profile-desc" id="desc-profile"></p>
-
-        <h3 class="section-header" id="label-portfolio">Moje Prace / Portfolio</h3>
-        <div class="portfolio-grid">
-            <div class="portfolio-item">
-                <img src="porsche.jpg" alt="Porsche">
-                <span id="label-porsche">Renowacja Porsche</span>
+        <section class="section">
+            <h2>Experience</h2>
+            
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Assembly fitter</span>
+                    <span class="company"> | LIFTRA</span>
+                </div>
+                <div class="job-meta">July 2023 – Currently | Szczecin</div>
+                <ul class="job-description">
+                    <li>Precise work with documentation and technical drawings</li>
+                    <li>Assembly of mechanical components and power hydraulics</li>
+                    <li>Assembly of BLADEHAWK and LT1200 crane systems</li>
+                </ul>
             </div>
-            <div class="portfolio-item">
-                <img src="liftra.jpg" alt="Liftra">
-                <span id="label-liftra">Projekty Liftra</span>
-            </div>
-            <div class="portfolio-item">
-                <img src="rowery.jpg" alt="Bikes">
-                <span id="label-bikes">Serwis Rowerowy</span>
-            </div>
-        </div>
 
-        <h3 class="section-header" id="label-experience">Doświadczenie</h3>
-        <div id="experience-container"></div>
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Carpenter</span>
+                    <span class="company"> | HÅLOGALAND ELEMENT AS</span>
+                </div>
+                <div class="job-meta">April 2022 – September 2022 | Risøyhamn (Norway)</div>
+                <ul class="job-description">
+                    <li>Production of prefabricated elements in accordance with specifications</li>
+                    <li>Operation of specialized carpentry machines and tools</li>
+                    <li>Assembly of structural details in compliance with quality standards</li>
+                </ul>
+            </div>
 
-        <h3 class="section-header" id="label-education">Edukacja</h3>
-        <div id="education-container"></div>
-    </main>
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Senior mechanic - complaint handling</span>
+                    <span class="company"> | SYNKROS bike shop</span>
+                </div>
+                <div class="job-meta">March 2018 – March 2022 | Szczecin</div>
+                <ul class="job-description">
+                    <li>Comprehensive mechanical service and diagnostics</li>
+                    <li>Professional technical advice and customer service</li>
+                    <li>Management of shop and service operations</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Junior engine mechanic</span>
+                    <span class="company"> | REIN-CAR-NATION classic car</span>
+                </div>
+                <div class="job-meta">October 2017 – February 2018 | Stobno</div>
+                <ul class="job-description">
+                    <li>Comprehensive renovation and restoration of classic Porsche models</li>
+                    <li>Precise assembly of mechanical parts and components</li>
+                    <li>Diagnostics and regeneration of unique components</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Customer advisor</span>
+                    <span class="company"> | HIPER-GLAZUR paint & bathroom</span>
+                </div>
+                <div class="job-meta">April 2016 – September 2017 | Szczecin</div>
+                <ul class="job-description">
+                    <li>Professional technical consulting in the field of construction chemicals</li>
+                    <li>Operation of specialized equipment for mixing paints and plasters</li>
+                    <li>Inventory management and delivery logistics</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Reinforcement worker - formwork carpenter</span>
+                    <span class="company"> | MARKONA AB Markförädling</span>
+                </div>
+                <div class="job-meta">February 2014 – February 2016 | Enköping (Sweden)</div>
+                <ul class="job-description">
+                    <li>Construction of reinforced concrete structures in accordance with standards</li>
+                    <li>Assembly of formwork systems based on technical drawings</li>
+                    <li>Operation of specialized construction equipment</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Mechanic</span>
+                    <span class="company"> | KADRZYŃSKI bike shop</span>
+                </div>
+                <div class="job-meta">January 2012 – December 2013 | Szczecin</div>
+                <ul class="job-description">
+                    <li>Service and maintenance of all types of bicycles</li>
+                    <li>Assembly and pre-sale preparation of equipment</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item">Reading technical drawings</div>
+                <div class="skill-item">Reading assembly documentation</div>
+                <div class="skill-item">Using specialized tools</div>
+                <div class="skill-item">Professional bicycle service</div>
+                <div class="skill-item">Precision mechanics</div>
+                <div class="skill-item">Installation of power hydraulics</div>
+                <div class="skill-item">High technical culture</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Technical Licenses (UDT)</h2>
+            <div class="licenses">
+                <span class="tag">Stationary Cranes</span>
+                <span class="tag">Mobile Elevating Work Platforms</span>
+                <span class="tag">Forklifts</span>
+                <span class="tag">Overhead Cranes</span>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Education</h2>
+            <div class="education">
+                <div class="education-title">Secondary Technical School of Building</div>
+                <div class="education-meta">2007 – 2011 | Szczecin</div>
+                <div class="education-details">Technologist Finishing Work / General Construction</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Languages</h2>
+            <div class="languages">
+                <span class="tag">English (communicative)</span>
+                <span class="tag">Spanish (learning)</span>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Hobbies</h2>
+            <div class="hobbies">
+                <span class="tag">Cycling (enduro, gravel)</span>
+                <span class="tag">Mechanics</span>
+            </div>
+        </section>
+    </div>
+
+    <!-- POLISH VERSION -->
+    <div class="content hidden" data-content="pl">
+        <header>
+            <h1>Maciej Miernik</h1>
+            <div class="subtitle">Mackezzy Wheel Builder</div>
+            <p class="profile">
+                Monter i mechanik z 12-letnim doświadczeniem w Polsce i Skandynawii. Specjalista od hydrauliki siłowej, zaawansowanego serwisu rowerowego oraz mechaniki precyzyjnej. Od budowy systemów dla energetyki wiatrowej po renowację klasycznych Porsche – w pracy bazuję na precyzyjnym rysunku technicznym, dbałości o detale oraz standardach BHP.
+            </p>
+            <div class="contact">
+                <a href="tel:+48665571260">+48 665 571 260</a>
+                <a href="mailto:miernik.maciek@gmail.com">miernik.maciek@gmail.com</a>
+                <span>Szczecin, Polska</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2>Doświadczenie</h2>
+            
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Monter</span>
+                    <span class="company"> | LIFTRA</span>
+                </div>
+                <div class="job-meta">Lipiec 2023 – Obecnie | Szczecin</div>
+                <ul class="job-description">
+                    <li>Precyzyjna praca z dokumentacją i rysunkiem technicznym</li>
+                    <li>Montaż podzespołów mechanicznych i hydrauliki siłowej</li>
+                    <li>Montaż systemów dźwigowych LT1200 oraz BLADEHAWK</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Stolarz</span>
+                    <span class="company"> | HÅLOGALAND ELEMENT AS</span>
+                </div>
+                <div class="job-meta">Kwiecień 2022 – Wrzesień 2022 | Risøyhamn (Norwegia)</div>
+                <ul class="job-description">
+                    <li>Produkcja prefabrykowanych elementów zgodnie ze specyfikacją</li>
+                    <li>Obsługa specjalistycznych maszyn i narzędzi stolarskich</li>
+                    <li>Montaż detali konstrukcyjnych z zachowaniem norm jakościowych</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Starszy mechanik - obsługa reklamacyjna</span>
+                    <span class="company"> | SYNKROS</span>
+                </div>
+                <div class="job-meta">Marzec 2018 – Marzec 2022 | Szczecin</div>
+                <ul class="job-description">
+                    <li>Kompleksowy serwis mechaniczny oraz diagnostyka</li>
+                    <li>Profesjonalne doradztwo techniczne i obsługa klienta</li>
+                    <li>Zarządzanie bieżącą działalnością sklepu i serwisu</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Mechanik</span>
+                    <span class="company"> | REIN-CAR-NATION</span>
+                </div>
+                <div class="job-meta">Październik 2017 – Luty 2018 | Stobno</div>
+                <ul class="job-description">
+                    <li>Kompleksowa renowacja i odbudowa klasycznych modeli Porsche</li>
+                    <li>Precyzyjny montaż elementów oraz podzespołów mechanicznych</li>
+                    <li>Diagnostyka i regeneracja unikatowych komponentów</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Doradca klienta</span>
+                    <span class="company"> | HIPER-GLAZUR</span>
+                </div>
+                <div class="job-meta">Kwiecień 2016 – Wrzesień 2017 | Szczecin</div>
+                <ul class="job-description">
+                    <li>Profesjonalne doradztwo techniczne w zakresie chemii budowlanej</li>
+                    <li>Obsługa specjalistycznych urządzeń do mieszania farb i tynków</li>
+                    <li>Zarządzanie stanami magazynowymi i logistyką dostaw</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Zbrojarz - cieśla szalunkowy</span>
+                    <span class="company"> | MARKONA AB Markförädling</span>
+                </div>
+                <div class="job-meta">Luty 2014 – Luty 2016 | Enköping (Szwecja)</div>
+                <ul class="job-description">
+                    <li>Wykonawstwo konstrukcji żelbetowych zgodnie z normami</li>
+                    <li>Montaż systemów szalunkowych na podstawie rys. technicznego</li>
+                    <li>Obsługa specjalistycznego sprzętu budowlanego</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Mechanik</span>
+                    <span class="company"> | KADRZYŃSKI</span>
+                </div>
+                <div class="job-meta">Styczeń 2012 – Grudzień 2013 | Szczecin</div>
+                <ul class="job-description">
+                    <li>Serwis i konserwacja rowerów wszystkich typów</li>
+                    <li>Montaż oraz przygotowywanie sprzętu do sprzedaży</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Umiejętności</h2>
+            <div class="skills-grid">
+                <div class="skill-item">Czytanie rysunku technicznego</div>
+                <div class="skill-item">Czytanie dokumentacji złożeniowej</div>
+                <div class="skill-item">Obsługa specjalistycznych narzędzi</div>
+                <div class="skill-item">Profesjonalny serwis rowerowy</div>
+                <div class="skill-item">Mechanika precyzyjna</div>
+                <div class="skill-item">Montaż i diagnostyka hydrauliki siłowej</div>
+                <div class="skill-item">Wysoka kultura techniczna</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Uprawnienia (UDT)</h2>
+            <div class="licenses">
+                <span class="tag">Żurawie stacjonarne</span>
+                <span class="tag">Podesty ruchome przejezdne</span>
+                <span class="tag">Wózki jezdniowe podnośnikowe</span>
+                <span class="tag">Suwnice, wciągniki i wciągarki</span>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Edukacja</h2>
+            <div class="education">
+                <div class="education-title">Technikum Budowlane</div>
+                <div class="education-meta">2007 – 2011 | Szczecin</div>
+                <div class="education-details">Technolog robót wykończeniowych w budownictwie</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Języki</h2>
+            <div class="languages">
+                <span class="tag">Angielski (komunikatywny)</span>
+                <span class="tag">Hiszpański (uczę się)</span>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Zainteresowania</h2>
+            <div class="hobbies">
+                <span class="tag">Kolarstwo (enduro, gravel)</span>
+                <span class="tag">Mechanika</span>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2024 Maciej Miernik. Data protection consent applies.</p>
+    </footer>
 
     <script>
-        const data = {
-            pl: {
-                labels: {
-                    contact: "Kontakt", udt: "UDT", skills: "Umiejętności", lang: "Języki", hobbies: "Zainteresowania",
-                    profile: "O Mnie", experience: "Doświadczenie", education: "Edukacja", portfolio: "Moje Prace / Portfolio",
-                    porsche: "Renowacja Porsche", liftra: "Projekty Liftra", bikes: "Serwis Rowerowy"
-                },
-                profile: "Monter i mechanik z 12-letnim doświadczeniem w Polsce i Skandynawii. Specjalista od hydrauliki siłowej, zaawansowanego serwisu rowerowego oraz mechaniki precyzyjnej.",
-                udt: ["Żurawie stacjonarne", "Podesty ruchome przejezdne", "Wózki podnośnikowe", "Suwnice i wciągarki"],
-                skills: ["Rysunek techniczny", "Hydraulika siłowa", "Mechanika precyzyjna", "Serwis rowerowy"],
-                languages: ["Angielski (komunikatywny)", "Hiszpański (uczę się)"],
-                hobbies: ["Kolarstwo (enduro, gravel)", "Mechanika"],
-                experience: [
-                    { company: "LIFTRA | Monter", date: "LIPIEC 2023 – OBECNIE", tasks: ["montaż podzespołów mechanicznych i hydrauliki siłowej", "montaż systemów LT1200 i BLADEHAWK"] },
-                    { company: "REIN-CAR-NATION | Mechanik", date: "2017 – 2018", tasks: ["odbudowa klasycznych modeli Porsche"] }
-                ],
-                education: [{ school: "TECHNIKUM BUDOWLANE", date: "2007 – 2011", desc: "Technolog robót wykończeniowych" }]
-            },
-            en: {
-                labels: {
-                    contact: "Contact", udt: "Technical Licenses", skills: "Skills", lang: "Languages", hobbies: "Hobbies",
-                    profile: "Profile", experience: "Experience", education: "Education", portfolio: "Projects / Portfolio",
-                    porsche: "Porsche Restoration", liftra: "Liftra Projects", bikes: "Bicycle Service"
-                },
-                profile: "Assembler and mechanic with 12 years of experience. Specialist in power hydraulics, bicycle servicing, and precision mechanics.",
-                udt: ["Stationary Cranes", "Mobile Access Platforms", "Forklifts", "Overhead Cranes"],
-                skills: ["Technical Drawing", "Power Hydraulics", "Precision Mechanics", "Bicycle Service"],
-                languages: ["English (communicative)", "Spanish (learning)"],
-                hobbies: ["Cycling (enduro, gravel)", "Mechanics"],
-                experience: [
-                    { company: "LIFTRA | Assembler", date: "JULY 2023 – PRESENT", tasks: ["assembly of mechanical components", "assembly of LT1200 and BLADEHAWK systems"] },
-                    { company: "REIN-CAR-NATION | Mechanic", date: "2017 – 2018", tasks: ["restoration of classic Porsche models"] }
-                ],
-                education: [{ school: "TECHNICAL SCHOOL", date: "2007 – 2011", desc: "Finishing Work Technologist" }]
-            }
-        };
+        // Language switcher
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const contentSections = document.querySelectorAll('.content');
 
-        function changeLang(lang, event) {
-            for (let key in data[lang].labels) {
-                const el = document.getElementById('label-' + key);
-                if (el) el.innerText = data[lang].labels[key];
-            }
-            document.getElementById('desc-profile').innerText = data[lang].profile;
-            const fillList = (id, items) => { document.getElementById(id).innerHTML = items.map(i => `<li>${i}</li>`).join(''); };
-            fillList('list-udt', data[lang].udt);
-            fillList('list-skills', data[lang].skills);
-            fillList('list-languages', data[lang].languages);
-            fillList('list-hobbies', data[lang].hobbies);
-
-            document.getElementById('experience-container').innerHTML = data[lang].experience.map(exp => `
-                <div class="exp-item">
-                    <div class="exp-title">${exp.company}</div>
-                    <div class="exp-meta">${exp.date}</div>
-                    <ul class="exp-desc">${exp.tasks.map(t => `<li>${t}</li>`).join('')}</ul>
-                </div>
-            `).join('');
-
-            document.getElementById('education-container').innerHTML = data[lang].education.map(ed => `
-                <div class="exp-item"><div class="exp-title">${ed.school}</div><div class="exp-meta">${ed.date}</div><div>${ed.desc}</div></div>
-            `).join('');
-
-            document.querySelectorAll('.btn-lang').forEach(btn => btn.classList.remove('active'));
-            if(event) event.target.classList.add('active');
-        }
-
-        window.onload = () => changeLang('pl');
+        langButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const lang = button.dataset.lang;
+                
+                // Update active button
+                langButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                // Show corresponding content
+                contentSections.forEach(content => {
+                    if (content.dataset.content === lang) {
+                        content.classList.remove('hidden');
+                    } else {
+                        content.classList.add('hidden');
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
