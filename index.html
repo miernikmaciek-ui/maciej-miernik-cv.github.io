@@ -130,7 +130,12 @@
 
         .theme-btn {
             width: 40px;
+            height: 40px;
+            padding: 0;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .theme-btn svg {
@@ -190,12 +195,17 @@
         }
 
         .menu-link {
-            display: block;
+            display: flex;
+            align-items: center;
             padding: 0.8rem 0;
             color: var(--text);
             text-decoration: none;
             transition: color 0.2s;
             cursor: pointer;
+        }
+
+        .menu-link svg {
+            flex-shrink: 0;
         }
 
         .menu-link:hover:not(.disabled) {
@@ -668,7 +678,7 @@
 
         @media (max-width: 768px) {
             .container {
-                padding: 2rem 1rem;
+                padding: 7rem 1rem 2rem;
             }
 
             .header-container {
@@ -728,14 +738,15 @@
     <!-- SIDE MENU -->
     <nav class="side-menu" id="sideMenu">
         <div class="menu-section">
-            <div class="menu-title" data-pl="Nawigacja" data-en="Navigation" data-de="Navigation">Nawigacja</div>
-            <a href="#about" class="menu-link" data-pl="O mnie" data-en="About Me" data-de="Über mich">O mnie</a>
-            <a href="#experience" class="menu-link" data-pl="Doświadczenie" data-en="Experience" data-de="Erfahrung">Doświadczenie</a>
-            <a href="#education" class="menu-link" data-pl="Edukacja" data-en="Education" data-de="Ausbildung">Edukacja</a>
-            <a href="#licenses" class="menu-link" data-pl="Uprawnienia (UDT)" data-en="Licenses (UDT)" data-de="Lizenzen (UDT)">Uprawnienia (UDT)</a>
-            <a href="#skills" class="menu-link" data-pl="Umiejętności" data-en="Skills" data-de="Fähigkeiten">Umiejętności</a>
-            <a href="#languages" class="menu-link" data-pl="Języki" data-en="Languages" data-de="Sprachen">Języki</a>
-            <a href="#hobbies" class="menu-link" data-pl="Zainteresowania" data-en="Hobbies" data-de="Hobbys">Zainteresowania</a>
+            <div class="menu-title" data-pl="Dodatkowe" data-en="Additional" data-de="Zusätzlich">Dodatkowe</div>
+            <a href="#licenses" class="menu-link" data-pl="Uprawnienia UDT" data-en="UDT Licenses" data-de="UDT-Lizenzen">
+                <svg viewBox="0 0 24 24" style="margin-right: 0.5rem;"><path d="M12 2L1 7l11 5 11-5-11-5zM1 17l11 5 11-5M1 12l11 5 11-5"/></svg>
+                Uprawnienia UDT
+            </a>
+            <a class="menu-link disabled" data-pl="Galeria" data-en="Gallery" data-de="Galerie">
+                <svg viewBox="0 0 24 24" style="margin-right: 0.5rem;"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                Galeria
+            </a>
         </div>
 
         <div class="menu-section">
@@ -757,12 +768,6 @@
         </div>
 
         <div class="menu-section">
-            <div class="menu-title" data-pl="Galeria" data-en="Gallery" data-de="Galerie">Galeria</div>
-            <a class="menu-link disabled" data-pl="Praca" data-en="Work" data-de="Arbeit">Praca</a>
-            <a class="menu-link disabled" data-pl="Serwis" data-en="Service" data-de="Service">Serwis</a>
-        </div>
-
-        <div class="menu-section">
             <div class="menu-title" data-pl="Kontakt" data-en="Contact" data-de="Kontakt">Kontakt</div>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/maciej-miernik/" class="social-link" target="_blank">
@@ -773,7 +778,7 @@
                     <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                     Instagram
                 </a>
-                <a href="mailto:miernik.maciek@gmail.com" class="social-link">
+                <a href="/cdn-cgi/l/email-protection#630e0a06110d0a084d0e02000a060823040e020a0f4d000c0e" class="social-link">
                     <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                     Email
                 </a>
@@ -935,6 +940,20 @@
                     </ul>
                 </div>
             </section>
+
+            <section class="section" id="work-map">
+                <h2>Mapa Miejsc Pracy</h2>
+                <div style="width: 100%; height: 400px; border: 1px solid var(--border); margin-top: 1rem; background: var(--card-bg); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.9rem;">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m52!1m12!1m3!1d4500000!2d15.05!3d56.54!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m37!3e0!4m5!1s0x47aa0bd49aa1673d%3A0x707788d4ac5f2223!2sLiftra%20Sp.%20z%20o.o.%2C%20Szczecin!3m2!1d53.458284!2d14.586271!4m5!1s0x45dc5877709f2001%3A0x3bcce851cb72bb26!2sH%C3%A5logaland%20Element%20AS%2C%20Ris%C3%B8yhamn!3m2!1d68.949558!2d15.654064!4m5!1s0x47aa0939aaa93969%3A0x74f29335a55a37a!2sSynkros%2C%20Szczecin!3m2!1d53.434836!2d14.530719!4m5!1s0x47aa0edf3ab79ef1%3A0x3dcca684f13df971!2sReincarnation-classic%20car!3m2!1d53.414717!2d14.426069!4m5!1s0x465e51d9229710a5%3A0xc9b7d5e9ded0f1ba!2sMarkona%2C%20Enk%C3%B6ping!3m2!1d59.644367!2d17.122567!5e0!3m2!1spl!2spl!4v1234567890!5m2!1spl!2spl" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;"
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </section>
         </div>
     </div>
 
@@ -1082,6 +1101,20 @@
                         <li>Cycling (enduro, gravel)</li>
                         <li>Mechanics</li>
                     </ul>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Work Locations Map</h2>
+                <div style="width: 100%; height: 400px; border: 1px solid var(--border); margin-top: 1rem; background: var(--card-bg);">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m52!1m12!1m3!1d4500000!2d15.05!3d56.54!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m37!3e0!4m5!1s0x47aa0bd49aa1673d%3A0x707788d4ac5f2223!2sLiftra%20Sp.%20z%20o.o.%2C%20Szczecin!3m2!1d53.458284!2d14.586271!4m5!1s0x45dc5877709f2001%3A0x3bcce851cb72bb26!2sH%C3%A5logaland%20Element%20AS%2C%20Ris%C3%B8yhamn!3m2!1d68.949558!2d15.654064!4m5!1s0x47aa0939aaa93969%3A0x74f29335a55a37a!2sSynkros%2C%20Szczecin!3m2!1d53.434836!2d14.530719!4m5!1s0x47aa0edf3ab79ef1%3A0x3dcca684f13df971!2sReincarnation-classic%20car!3m2!1d53.414717!2d14.426069!4m5!1s0x465e51d9229710a5%3A0xc9b7d5e9ded0f1ba!2sMarkona%2C%20Enk%C3%B6ping!3m2!1d59.644367!2d17.122567!5e0!3m2!1sen!2spl!4v1234567890!5m2!1sen!2spl" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;"
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
                 </div>
             </section>
         </div>
@@ -1233,6 +1266,20 @@
                     </ul>
                 </div>
             </section>
+
+            <section class="section">
+                <h2>Karte der Arbeitsorte</h2>
+                <div style="width: 100%; height: 400px; border: 1px solid var(--border); margin-top: 1rem; background: var(--card-bg);">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m52!1m12!1m3!1d4500000!2d15.05!3d56.54!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m37!3e0!4m5!1s0x47aa0bd49aa1673d%3A0x707788d4ac5f2223!2sLiftra%20Sp.%20z%20o.o.%2C%20Szczecin!3m2!1d53.458284!2d14.586271!4m5!1s0x45dc5877709f2001%3A0x3bcce851cb72bb26!2sH%C3%A5logaland%20Element%20AS%2C%20Ris%C3%B8yhamn!3m2!1d68.949558!2d15.654064!4m5!1s0x47aa0939aaa93969%3A0x74f29335a55a37a!2sSynkros%2C%20Szczecin!3m2!1d53.434836!2d14.530719!4m5!1s0x47aa0edf3ab79ef1%3A0x3dcca684f13df971!2sReincarnation-classic%20car!3m2!1d53.414717!2d14.426069!4m5!1s0x465e51d9229710a5%3A0xc9b7d5e9ded0f1ba!2sMarkona%2C%20Enk%C3%B6ping!3m2!1d59.644367!2d17.122567!5e0!3m2!1sde!2spl!4v1234567890!5m2!1sde!2spl" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;"
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </section>
         </div>
     </div>
 
@@ -1256,7 +1303,7 @@
         </div>
     </div>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Job data with corrected GPS coordinates
         const jobs = {
             liftra: {
@@ -1265,8 +1312,8 @@
                     company: 'LIFTRA',
                     period: 'Lipiec 2023 – Obecnie',
                     address: 'ul. Dębogórska 34',
-                    lat: 53.45833,
-                    lng: 14.58879,
+                    lat: 53.45828,
+                    lng: 14.58627,
                     desc: [
                         'Precyzyjna praca z dokumentacją i rysunkiem technicznym',
                         'Montaż podzespołów mechanicznych i hydrauliki siłowej',
@@ -1279,8 +1326,8 @@
                     company: 'LIFTRA',
                     period: 'July 2023 – Currently',
                     address: 'Dębogórska 34',
-                    lat: 53.45833,
-                    lng: 14.58879,
+                    lat: 53.45828,
+                    lng: 14.58627,
                     desc: [
                         'Precise work with documentation and technical drawings',
                         'Assembly of mechanical components and power hydraulics',
@@ -1293,8 +1340,8 @@
                     company: 'LIFTRA',
                     period: 'Juli 2023 – Derzeit',
                     address: 'Dębogórska 34',
-                    lat: 53.45833,
-                    lng: 14.58879,
+                    lat: 53.45828,
+                    lng: 14.58627,
                     desc: [
                         'Präzise Arbeit mit Dokumentation und technischen Zeichnungen',
                         'Montage mechanischer Komponenten und Leistungshydraulik',
@@ -1309,8 +1356,8 @@
                     company: 'HÅLOGALAND ELEMENT AS',
                     period: 'Kwiecień 2022 – Wrzesień 2022',
                     address: 'Risøyhamn',
-                    lat: 68.97191,
-                    lng: 15.63835,
+                    lat: 68.94956,
+                    lng: 15.65406,
                     desc: [
                         'Produkcja prefabrykowanych elementów zgodnie ze specyfikacją',
                         'Obsługa specjalistycznych maszyn i narzędzi stolarskich',
@@ -1323,8 +1370,8 @@
                     company: 'HÅLOGALAND ELEMENT AS',
                     period: 'April 2022 – September 2022',
                     address: 'Risøyhamn',
-                    lat: 68.97191,
-                    lng: 15.63835,
+                    lat: 68.94956,
+                    lng: 15.65406,
                     desc: [
                         'Production of prefabricated elements in accordance with specifications',
                         'Operation of specialized carpentry machines and tools',
@@ -1337,8 +1384,8 @@
                     company: 'HÅLOGALAND ELEMENT AS',
                     period: 'April 2022 – September 2022',
                     address: 'Risøyhamn',
-                    lat: 68.97191,
-                    lng: 15.63835,
+                    lat: 68.94956,
+                    lng: 15.65406,
                     desc: [
                         'Herstellung vorgefertigter Elemente nach Spezifikation',
                         'Bedienung spezialisierter Tischlereimaschinen und -werkzeuge',
@@ -1353,8 +1400,8 @@
                     company: 'SYNKROS',
                     period: 'Marzec 2018 – Marzec 2022',
                     address: 'ul. 5 Lipca 38/2',
-                    lat: 53.42808,
-                    lng: 14.54471,
+                    lat: 53.43484,
+                    lng: 14.53072,
                     desc: [
                         'Kompleksowy serwis mechaniczny oraz diagnostyka',
                         'Profesjonalne doradztwo techniczne i obsługa klienta',
@@ -1367,8 +1414,8 @@
                     company: 'SYNKROS',
                     period: 'March 2018 – March 2022',
                     address: '5 Lipca 38/2',
-                    lat: 53.42808,
-                    lng: 14.54471,
+                    lat: 53.43484,
+                    lng: 14.53072,
                     desc: [
                         'Comprehensive mechanical service and diagnostics',
                         'Professional technical advice and customer service',
@@ -1381,8 +1428,8 @@
                     company: 'SYNKROS',
                     period: 'März 2018 – März 2022',
                     address: '5 Lipca 38/2',
-                    lat: 53.42808,
-                    lng: 14.54471,
+                    lat: 53.43484,
+                    lng: 14.53072,
                     desc: [
                         'Umfassender mechanischer Service und Diagnostik',
                         'Professionelle technische Beratung und Kundenservice',
@@ -1397,8 +1444,8 @@
                     company: 'REIN-CAR-NATION',
                     period: 'Październik 2017 – Luty 2018',
                     address: 'Stobno',
-                    lat: 53.5333,
-                    lng: 14.6167,
+                    lat: 53.41472,
+                    lng: 14.42607,
                     desc: [
                         'Kompleksowa renowacja i odbudowa klasycznych modeli Porsche',
                         'Precyzyjny montaż elementów oraz podzespołów mechanicznych',
@@ -1411,8 +1458,8 @@
                     company: 'REIN-CAR-NATION',
                     period: 'October 2017 – February 2018',
                     address: 'Stobno',
-                    lat: 53.5333,
-                    lng: 14.6167,
+                    lat: 53.41472,
+                    lng: 14.42607,
                     desc: [
                         'Comprehensive renovation and restoration of classic Porsche models',
                         'Precise assembly of mechanical parts and components',
@@ -1425,8 +1472,8 @@
                     company: 'REIN-CAR-NATION',
                     period: 'Oktober 2017 – Februar 2018',
                     address: 'Stobno',
-                    lat: 53.5333,
-                    lng: 14.6167,
+                    lat: 53.41472,
+                    lng: 14.42607,
                     desc: [
                         'Umfassende Renovierung und Restaurierung klassischer Porsche-Modelle',
                         'Präzise Montage mechanischer Teile und Komponenten',
@@ -1441,8 +1488,8 @@
                     company: 'HIPER-GLAZUR',
                     period: 'Kwiecień 2016 – Wrzesień 2017',
                     address: 'ul. Świerczewska 8',
-                    lat: 53.406,
-                    lng: 14.544,
+                    lat: 53.42497,
+                    lng: 14.50881,
                     desc: [
                         'Profesjonalne doradztwo techniczne w zakresie chemii budowlanej',
                         'Obsługa specjalistycznych urządzeń do mieszania farb i tynków',
@@ -1455,8 +1502,8 @@
                     company: 'HIPER-GLAZUR',
                     period: 'April 2016 – September 2017',
                     address: 'Świerczewska 8',
-                    lat: 53.406,
-                    lng: 14.544,
+                    lat: 53.42497,
+                    lng: 14.50881,
                     desc: [
                         'Professional technical consulting in the field of construction chemicals',
                         'Operation of specialized equipment for mixing paints and plasters',
@@ -1469,8 +1516,8 @@
                     company: 'HIPER-GLAZUR',
                     period: 'April 2016 – September 2017',
                     address: 'Świerczewska 8',
-                    lat: 53.406,
-                    lng: 14.544,
+                    lat: 53.42497,
+                    lng: 14.50881,
                     desc: [
                         'Professionelle technische Beratung im Bereich Bauchemie',
                         'Bedienung spezialisierter Geräte zum Mischen von Farben und Putzen',
@@ -1485,8 +1532,8 @@
                     company: 'MARKONA AB',
                     period: 'Luty 2014 – Luty 2016',
                     address: 'Kvartsgatan, Enköping',
-                    lat: 59.636,
-                    lng: 17.078,
+                    lat: 59.64437,
+                    lng: 17.12257,
                     desc: [
                         'Wykonawstwo konstrukcji żelbetowych zgodnie z normami',
                         'Montaż systemów szalunkowych na podstawie rys. technicznego',
@@ -1499,8 +1546,8 @@
                     company: 'MARKONA AB',
                     period: 'February 2014 – February 2016',
                     address: 'Kvartsgatan, Enköping',
-                    lat: 59.636,
-                    lng: 17.078,
+                    lat: 59.64437,
+                    lng: 17.12257,
                     desc: [
                         'Construction of reinforced concrete structures in accordance with standards',
                         'Assembly of formwork systems based on technical drawings',
@@ -1513,8 +1560,8 @@
                     company: 'MARKONA AB',
                     period: 'Februar 2014 – Februar 2016',
                     address: 'Kvartsgatan, Enköping',
-                    lat: 59.636,
-                    lng: 17.078,
+                    lat: 59.64437,
+                    lng: 17.12257,
                     desc: [
                         'Bau von Stahlbetonkonstruktionen nach Normen',
                         'Montage von Schalungssystemen basierend auf technischen Zeichnungen',
@@ -1529,8 +1576,8 @@
                     company: 'KADRZYŃSKI',
                     period: 'Styczeń 2012 – Grudzień 2013',
                     address: 'ul. Wojska Polskiego 20',
-                    lat: 53.436,
-                    lng: 14.558,
+                    lat: 53.44010,
+                    lng: 14.53395,
                     desc: [
                         'Serwis i konserwacja rowerów wszystkich typów',
                         'Montaż oraz przygotowywanie sprzętu do sprzedaży'
@@ -1542,8 +1589,8 @@
                     company: 'KADRZYŃSKI',
                     period: 'January 2012 – December 2013',
                     address: 'Wojska Polskiego 20',
-                    lat: 53.436,
-                    lng: 14.558,
+                    lat: 53.44010,
+                    lng: 14.53395,
                     desc: [
                         'Service and maintenance of all types of bicycles',
                         'Assembly and pre-sale preparation of equipment'
@@ -1555,8 +1602,8 @@
                     company: 'KADRZYŃSKI',
                     period: 'Januar 2012 – Dezember 2013',
                     address: 'Wojska Polskiego 20',
-                    lat: 53.436,
-                    lng: 14.558,
+                    lat: 53.44010,
+                    lng: 14.53395,
                     desc: [
                         'Service und Wartung aller Fahrradtypen',
                         'Montage und Vorbereitung von Geräten für den Verkauf'
@@ -1739,10 +1786,3 @@
                 }
             }
             if (lightbox.classList.contains('active')) {
-                if (e.key === 'ArrowLeft') showPrev();
-                if (e.key === 'ArrowRight') showNext();
-            }
-        };
-    </script>
-</body>
-</html>
