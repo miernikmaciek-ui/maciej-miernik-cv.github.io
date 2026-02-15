@@ -1,429 +1,1851 @@
 <!DOCTYPE html>
+
 <html lang="pl">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Maciej Miernik - CV</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
     <style>
+
         :root {
+
             --bg: #ffffff;
-            --card-bg: #f8f9fa;
+
+            --sidebar-bg: #f8f9fa;
+
             --text: #1a1a1a;
+
             --accent: #4472C4;
+
             --muted: #666666;
+
             --border: #e0e0e0;
+
+            --overlay: rgba(0, 0, 0, 0.7);
+
+            --card-bg: #f8f9fa;
+
         }
+
+
+
         [data-theme="dark"] {
+
             --bg: #1a1a1a;
-            --card-bg: #242424;
+
+            --sidebar-bg: #242424;
+
             --text: #e0e0e0;
+
             --accent: #6b9eff;
+
             --muted: #a0a0a0;
+
             --border: #333333;
+
+            --overlay: rgba(0, 0, 0, 0.9);
+
+            --card-bg: #242424;
+
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+
+
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        html {
+
+            scroll-behavior: smooth;
+
+        }
+
+
+
         body {
+
             font-family: 'Roboto', sans-serif;
+
             background: var(--bg);
+
             color: var(--text);
+
             line-height: 1.6;
+
             font-size: 15px;
-            transition: all 0.3s;
+
+            transition: background 0.3s, color 0.3s;
+
         }
-        .container { max-width: 900px; margin: 0 auto; padding: 6rem 2rem 2rem; }
+
+
+
+        /* HAMBURGER MENU */
+
         .hamburger {
-            position: fixed; top: 1.5rem; left: 1.5rem; z-index: 1000;
-            width: 40px; height: 40px; background: var(--bg);
-            border: 1px solid var(--border); cursor: pointer;
-            display: flex; flex-direction: column; justify-content: center;
-            align-items: center; gap: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+            position: fixed;
+
+            top: 1.5rem;
+
+            left: 1.5rem;
+
+            z-index: 1000;
+
+            width: 40px;
+
+            height: 40px;
+
+            background: var(--bg);
+
+            border: 1px solid var(--border);
+
+            cursor: pointer;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 6px;
+
+            transition: all 0.3s;
+
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
         }
-        .hamburger span { width: 24px; height: 2px; background: var(--text); transition: all 0.3s; }
-        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(7px, 7px); }
-        .hamburger.active span:nth-child(2) { opacity: 0; }
-        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
-        
-        .controls { position: fixed; top: 1.5rem; right: 1.5rem; display: flex; gap: 0.5rem; z-index: 100; }
-        .lang-switch { display: flex; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-        .lang-btn, .theme-btn {
-            padding: 0.5rem 0.8rem; border: 1px solid var(--border);
-            background: var(--bg); color: var(--muted); cursor: pointer;
-            font-size: 0.75rem; text-transform: uppercase; font-weight: 500; transition: all 0.2s;
+
+
+
+        .hamburger:hover {
+
+            border-color: var(--accent);
+
         }
-        .lang-btn:not(:last-child) { border-right: none; }
-        .lang-btn:hover, .theme-btn:hover { color: var(--text); }
-        .lang-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
-        .theme-btn { width: 40px; height: 40px; padding: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; }
-        .theme-btn svg { width: 20px; height: 20px; fill: var(--text); }
-        
-        .menu-overlay {
-            position: fixed; inset: 0; background: rgba(0,0,0,0.7);
-            z-index: 998; opacity: 0; visibility: hidden; transition: all 0.3s;
+
+
+
+        .hamburger span {
+
+            width: 24px;
+
+            height: 2px;
+
+            background: var(--text);
+
+            transition: all 0.3s;
+
         }
-        .menu-overlay.active { opacity: 1; visibility: visible; }
+
+
+
+        .hamburger.active span:nth-child(1) {
+
+            transform: rotate(45deg) translate(7px, 7px);
+
+        }
+
+
+
+        .hamburger.active span:nth-child(2) {
+
+            opacity: 0;
+
+        }
+
+
+
+        .hamburger.active span:nth-child(3) {
+
+            transform: rotate(-45deg) translate(7px, -7px);
+
+        }
+
+
+
         .side-menu {
-            position: fixed; top: 0; left: -340px; width: 340px; height: 100vh;
-            background: var(--bg); border-right: 1px solid var(--border);
-            z-index: 999; transition: left 0.3s; overflow-y: auto;
-            padding: 5rem 2rem 2rem; box-shadow: 2px 0 16px rgba(0,0,0,0.2);
+
+            position: fixed;
+
+            top: 0;
+
+            left: -340px;
+
+            width: 340px;
+
+            height: 100vh;
+
+            background: var(--bg);
+
+            border-right: 1px solid var(--border);
+
+            z-index: 999;
+
+            transition: left 0.3s ease, background 0.3s;
+
+            overflow-y: auto;
+
+            padding: 5rem 2rem 2rem;
+
+            box-shadow: 2px 0 16px rgba(0,0,0,0.1);
+
         }
-        .side-menu.active { left: 0; }
-        .menu-section { margin-bottom: 2rem; }
+
+
+
+        .side-menu.active {
+
+            left: 0;
+
+        }
+
+
+
+        .menu-overlay {
+
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            background: var(--overlay);
+
+            z-index: 998;
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transition: all 0.3s;
+
+        }
+
+
+
+        .menu-overlay.active {
+
+            opacity: 1;
+
+            visibility: visible;
+
+        }
+
+
+
+        .menu-section {
+
+            margin-bottom: 2rem;
+
+        }
+
+
+
         .menu-title {
-            font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;
-            color: var(--muted); margin-bottom: 1rem; padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border); font-weight: 500;
+
+            font-size: 0.7rem;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.1em;
+
+            color: var(--muted);
+
+            margin-bottom: 1rem;
+
+            padding-bottom: 0.5rem;
+
+            border-bottom: 1px solid var(--border);
+
+            font-weight: 500;
+
         }
+
+
+
         .menu-link {
-            display: flex; align-items: center; padding: 0.8rem 0; color: var(--text);
-            text-decoration: none; transition: color 0.2s; cursor: pointer;
+
+            display: block;
+
+            padding: 0.8rem 0;
+
+            color: var(--text);
+
+            text-decoration: none;
+
+            font-size: 1rem;
+
+            transition: color 0.2s;
+
+            cursor: pointer;
+
         }
-        .menu-link svg { flex-shrink: 0; margin-right: 0.5rem; }
-        .menu-link:hover:not(.disabled) { color: var(--accent); }
-        .menu-link.disabled { opacity: 0.4; cursor: not-allowed; }
-        
-        .cv-links { display: flex; flex-direction: column; gap: 0.8rem; }
+
+
+
+        .menu-link:hover {
+
+            color: var(--accent);
+
+        }
+
+
+
+        .cv-links {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 0.8rem;
+
+        }
+
+
+
         .cv-link {
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            padding: 0.8rem 1rem; background: var(--accent); color: white;
-            text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: background 0.2s;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 0.5rem;
+
+            padding: 0.8rem 1rem;
+
+            background: var(--accent);
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 0.9rem;
+
+            transition: background 0.2s;
+
+            font-weight: 500;
+
         }
-        .cv-link:hover:not(.disabled) { background: #3461b0; }
-        .cv-link.disabled { background: var(--muted); opacity: 0.5; cursor: not-allowed; }
-        
-        .social-links { display: flex; flex-direction: column; gap: 0.8rem; }
+
+
+
+        .cv-link:hover:not(.disabled) {
+
+            background: #3461b0;
+
+        }
+
+
+
+        .cv-link.disabled {
+
+            background: var(--muted);
+
+            cursor: not-allowed;
+
+            opacity: 0.5;
+
+        }
+
+
+
+        .cv-link svg {
+
+            width: 16px;
+
+            height: 16px;
+
+            fill: white;
+
+        }
+
+
+
+        .social-links {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 0.8rem;
+
+        }
+
+
+
         .social-link {
-            display: flex; align-items: center; gap: 0.8rem; padding: 0.8rem 0;
-            color: var(--text); text-decoration: none; transition: color 0.2s;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 0.8rem;
+
+            padding: 0.8rem 0;
+
+            color: var(--text);
+
+            text-decoration: none;
+
+            font-size: 0.9rem;
+
+            transition: color 0.2s;
+
         }
-        .social-link:hover:not(.disabled) { color: var(--accent); }
-        .social-link.disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
-        
-        svg { width: 16px; height: 16px; fill: currentColor; }
-        .social-link svg { width: 20px; height: 20px; }
-        
+
+
+
+        .social-link:hover:not(.disabled) {
+
+            color: var(--accent);
+
+        }
+
+
+
+        .social-link.disabled {
+
+            color: var(--muted);
+
+            opacity: 0.4;
+
+            cursor: not-allowed;
+
+            pointer-events: none;
+
+        }
+
+
+
+        .social-link svg {
+
+            width: 20px;
+
+            height: 20px;
+
+            fill: currentColor;
+
+            flex-shrink: 0;
+
+        }
+
+
+
+        /* LANGUAGE & THEME SWITCH */
+
+        .controls {
+
+            position: fixed;
+
+            top: 1.5rem;
+
+            right: 1.5rem;
+
+            display: flex;
+
+            gap: 0.5rem;
+
+            z-index: 100;
+
+        }
+
+
+
+        .lang-switch {
+
+            display: flex;
+
+            gap: 0;
+
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+        }
+
+
+
+        .lang-btn {
+
+            font-size: 0.75rem;
+
+            padding: 0.5rem 0.8rem;
+
+            border: 1px solid var(--border);
+
+            background: var(--bg);
+
+            color: var(--muted);
+
+            cursor: pointer;
+
+            transition: all 0.2s;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.05em;
+
+            font-weight: 500;
+
+        }
+
+
+
+        .lang-btn:not(:last-child) {
+
+            border-right: none;
+
+        }
+
+
+
+        .lang-btn:hover {
+
+            color: var(--text);
+
+        }
+
+
+
+        .lang-btn.active {
+
+            background: var(--accent);
+
+            color: white;
+
+            border-color: var(--accent);
+
+        }
+
+
+
+        .theme-toggle {
+
+            width: 40px;
+
+            height: 40px;
+
+            border: 1px solid var(--border);
+
+            background: var(--bg);
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            transition: all 0.2s;
+
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+        }
+
+
+
+        .theme-toggle:hover {
+
+            border-color: var(--accent);
+
+        }
+
+
+
+        .theme-toggle svg {
+
+            width: 20px;
+
+            height: 20px;
+
+            fill: var(--text);
+
+        }
+
+
+
+        /* MAIN LAYOUT */
+
+        .container {
+
+            max-width: 900px;
+
+            margin: 0 auto;
+
+            padding: 4rem 2rem 2rem;
+
+        }
+
+
+
+        /* HEADER WITH PHOTO */
+
         .header-container {
-            display: flex; gap: 2rem; align-items: flex-start; margin-bottom: 3rem;
-            padding-bottom: 1.5rem; border-bottom: 2px solid var(--accent);
+
+            display: flex;
+
+            gap: 2rem;
+
+            align-items: flex-start;
+
+            margin-bottom: 3rem;
+
+            padding-bottom: 1.5rem;
+
+            border-bottom: 2px solid var(--accent);
+
         }
+
+
+
         .profile-photo {
-            width: 150px; height: 150px; border-radius: 50%;
-            background: url('photo.jpg') center/cover no-repeat, var(--card-bg);
-            border: 3px solid var(--accent); flex-shrink: 0;
+
+            width: 150px;
+
+            height: 150px;
+
+            border-radius: 50%;
+
+            background: url('photo.jpg') center/cover no-repeat, var(--sidebar-bg);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: var(--muted);
+
+            font-size: 0.75rem;
+
+            text-align: center;
+
+            border: 3px solid var(--accent);
+
+            flex-shrink: 0;
+
+            padding: 1rem;
+
         }
-        h1 { font-size: 2.5rem; font-weight: 300; margin-bottom: 1rem; }
-        .profile-text { font-size: 1rem; color: var(--muted); line-height: 1.7; }
-        
-        .section { margin-bottom: 3rem; }
+
+
+
+        .header-text {
+
+            flex: 1;
+
+        }
+
+
+
+        h1 {
+
+            font-size: 2.5rem;
+
+            font-weight: 300;
+
+            margin-bottom: 1rem;
+
+            color: var(--text);
+
+        }
+
+
+
+        .profile-text {
+
+            font-size: 1rem;
+
+            color: var(--muted);
+
+            line-height: 1.7;
+
+        }
+
+
+
+        /* SECTIONS */
+
+        .section {
+
+            margin-bottom: 3rem;
+
+        }
+
+
+
         h2 {
-            font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.1em;
-            color: var(--accent); margin-bottom: 1.5rem; font-weight: 700;
-            padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent);
+
+            font-size: 1.1rem;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.1em;
+
+            color: var(--accent);
+
+            margin-bottom: 1.5rem;
+
+            font-weight: 700;
+
+            padding-bottom: 0.5rem;
+
+            border-bottom: 2px solid var(--accent);
+
         }
-        .job, .education, .info-section {
-            padding: 1.2rem; background: var(--card-bg);
-            border-left: 3px solid var(--accent); margin-bottom: 1.5rem; transition: all 0.3s;
+
+
+
+        /* JOB CARDS */
+
+        .job {
+
+            margin-bottom: 1.5rem;
+
+            padding: 1.2rem;
+
+            background: var(--card-bg);
+
+            border-left: 3px solid var(--accent);
+
+            cursor: pointer;
+
+            transition: all 0.3s;
+
         }
-        .job { cursor: pointer; }
-        .job:hover { transform: translateX(4px); box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-        .job-title, .education-title { font-size: 1.1rem; font-weight: 500; margin-bottom: 0.3rem; }
-        .company { font-weight: 300; color: var(--muted); }
-        .job-meta, .education-meta {
-            font-size: 0.8rem; color: var(--muted); text-transform: uppercase;
-            letter-spacing: 0.05em; margin-bottom: 0.8rem; font-weight: 500;
+
+
+
+        .job:hover {
+
+            transform: translateX(4px);
+
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
         }
-        .job-description { color: var(--muted); line-height: 1.7; font-size: 0.9rem; }
-        .job-description li { margin-left: 1.2rem; margin-bottom: 0.3rem; }
-        .more-link { font-size: 0.8rem; color: var(--accent); margin-top: 0.8rem; font-weight: 500; }
-        .more-link:after { content: " →"; }
-        
-        .info-list { list-style: none; padding: 0; }
-        .info-list li { padding: 0.4rem 0 0.4rem 1rem; font-size: 0.9rem; position: relative; }
-        .info-list li:before { content: "•"; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
-        
+
+
+
+        .job-header {
+
+            margin-bottom: 0.3rem;
+
+        }
+
+
+
+        .job-title {
+
+            font-size: 1.1rem;
+
+            font-weight: 500;
+
+            color: var(--text);
+
+        }
+
+
+
+        .company {
+
+            font-size: 1.1rem;
+
+            font-weight: 300;
+
+            color: var(--muted);
+
+        }
+
+
+
+        .job-meta {
+
+            font-size: 0.8rem;
+
+            color: var(--muted);
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.05em;
+
+            margin-bottom: 0.8rem;
+
+            font-weight: 500;
+
+        }
+
+
+
+        .job-description {
+
+            color: var(--muted);
+
+            line-height: 1.7;
+
+            font-size: 0.9rem;
+
+        }
+
+
+
+        .job-description li {
+
+            margin-left: 1.2rem;
+
+            margin-bottom: 0.3rem;
+
+        }
+
+
+
+        .more-link {
+
+            font-size: 0.8rem;
+
+            color: var(--accent);
+
+            margin-top: 0.8rem;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 0.3rem;
+
+            font-weight: 500;
+
+        }
+
+
+
+        .more-link:after {
+
+            content: "→";
+
+        }
+
+
+
         /* MODAL */
+
         .modal {
-            position: fixed; inset: 0; background: rgba(0,0,0,0.8);
-            z-index: 2000; display: flex; align-items: center; justify-content: center;
-            opacity: 0; visibility: hidden; transition: all 0.3s; padding: 1rem;
+
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            background: var(--overlay);
+
+            z-index: 2000;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transition: all 0.3s;
+
+            padding: 1rem;
+
         }
-        .modal.active { opacity: 1; visibility: visible; }
+
+
+
+        .modal.active {
+
+            opacity: 1;
+
+            visibility: visible;
+
+        }
+
+
+
         .modal-content {
-            background: var(--bg); max-width: 800px; width: 100%;
-            max-height: 90vh; overflow-y: auto; box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+
+            background: var(--bg);
+
+            max-width: 800px;
+
+            width: 100%;
+
+            max-height: 90vh;
+
+            overflow-y: auto;
+
             position: relative;
+
+            animation: slideUp 0.3s ease-out;
+
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+
         }
+
+
+
+        @keyframes slideUp {
+
+            from {
+
+                transform: translateY(50px);
+
+                opacity: 0;
+
+            }
+
+            to {
+
+                transform: translateY(0);
+
+                opacity: 1;
+
+            }
+
+        }
+
+
+
         .modal-close {
-            position: sticky; top: 0; padding: 1rem; background: var(--bg);
-            border-bottom: 1px solid var(--border); text-align: right; z-index: 10;
+
+            position: sticky;
+
+            top: 0;
+
+            right: 0;
+
+            width: 100%;
+
+            padding: 1rem;
+
+            background: var(--bg);
+
+            border-bottom: 1px solid var(--border);
+
+            text-align: right;
+
+            z-index: 10;
+
         }
+
+
+
         .close-btn {
-            font-size: 1.5rem; border: none; background: none;
-            cursor: pointer; color: var(--text); width: 40px; height: 40px;
+
+            font-size: 1.5rem;
+
+            border: none;
+
+            background: none;
+
+            cursor: pointer;
+
+            color: var(--text);
+
+            width: 40px;
+
+            height: 40px;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            transition: color 0.2s;
+
         }
-        .modal-body { padding: 2rem; }
-        .modal-title { font-size: 1.8rem; font-weight: 500; margin-bottom: 0.5rem; }
-        .modal-company { font-size: 1.3rem; color: var(--muted); margin-bottom: 0.5rem; }
-        .modal-meta { font-size: 0.85rem; color: var(--muted); text-transform: uppercase; margin-bottom: 2rem; }
-        
-        .modal-location { margin: 2rem 0; padding: 1rem; background: var(--card-bg); border-left: 3px solid var(--accent); }
-        .modal-location h3 { font-size: 0.85rem; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem; }
-        .map-preview { width: 100%; height: 250px; background: #eee; margin-top: 1rem; border: 1px solid var(--border); }
-        
-        .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1.5rem; }
-        .gallery-thumb { width: 100%; height: 150px; background: var(--card-bg); border: 1px solid var(--border); cursor: pointer; object-fit: cover; }
-        
-        .hidden { display: none; }
+
+
+
+        .close-btn:hover {
+
+            color: var(--accent);
+
+        }
+
+
+
+        .modal-body {
+
+            padding: 2rem;
+
+        }
+
+
+
+        .modal-header {
+
+            margin-bottom: 2rem;
+
+        }
+
+
+
+        .modal-title {
+
+            font-size: 1.8rem;
+
+            font-weight: 500;
+
+            margin-bottom: 0.5rem;
+
+            color: var(--text);
+
+        }
+
+
+
+        .modal-company {
+
+            font-size: 1.3rem;
+
+            color: var(--muted);
+
+            margin-bottom: 0.5rem;
+
+        }
+
+
+
+        .modal-meta {
+
+            font-size: 0.85rem;
+
+            color: var(--muted);
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.05em;
+
+        }
+
+
+
+        .modal-location {
+
+            margin: 2rem 0;
+
+            padding: 1rem;
+
+            background: var(--card-bg);
+
+            border-left: 3px solid var(--accent);
+
+        }
+
+
+
+        .modal-location h3 {
+
+            font-size: 0.85rem;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.1em;
+
+            color: var(--accent);
+
+            margin-bottom: 0.8rem;
+
+            font-weight: 700;
+
+        }
+
+
+
+        .map-preview {
+
+            width: 100%;
+
+            height: 200px;
+
+            margin-bottom: 1rem;
+
+            border: 1px solid var(--border);
+
+            background: var(--sidebar-bg);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: var(--muted);
+
+            font-size: 0.9rem;
+
+        }
+
+
+
+        .map-link {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 0.5rem;
+
+            padding: 0.6rem 1.2rem;
+
+            background: var(--accent);
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 0.9rem;
+
+            transition: background 0.2s;
+
+            font-weight: 500;
+
+        }
+
+
+
+        .map-link:hover {
+
+            background: #3461b0;
+
+        }
+
+
+
+        .map-link svg {
+
+            width: 16px;
+
+            height: 16px;
+
+            fill: white;
+
+        }
+
+
+
+        .modal-description {
+
+            margin-bottom: 2rem;
+
+        }
+
+
+
+        .modal-description h3 {
+
+            font-size: 0.85rem;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.1em;
+
+            color: var(--accent);
+
+            margin-bottom: 1rem;
+
+            font-weight: 700;
+
+        }
+
+
+
+        .modal-description ul {
+
+            list-style: none;
+
+            padding: 0;
+
+        }
+
+
+
+        .modal-description li {
+
+            padding: 0.5rem 0;
+
+            padding-left: 1.5rem;
+
+            position: relative;
+
+            color: var(--text);
+
+            line-height: 1.7;
+
+        }
+
+
+
+        .modal-description li:before {
+
+            content: "→";
+
+            position: absolute;
+
+            left: 0;
+
+            color: var(--accent);
+
+        }
+
+
+
+        /* PHOTO GALLERY */
+
+        .modal-gallery {
+
+            margin-top: 2rem;
+
+        }
+
+
+
+        .modal-gallery h3 {
+
+            font-size: 0.85rem;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.1em;
+
+            color: var(--accent);
+
+            margin-bottom: 1rem;
+
+            font-weight: 700;
+
+        }
+
+
+
+        .gallery-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 1rem;
+
+        }
+
+
+
+        .gallery-thumb {
+
+            width: 100%;
+
+            height: 200px;
+
+            background: var(--sidebar-bg);
+
+            border: 1px solid var(--border);
+
+            cursor: pointer;
+
+            transition: all 0.3s;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: var(--muted);
+
+            font-size: 0.85rem;
+
+            text-align: center;
+
+            padding: 1rem;
+
+        }
+
+
+
+        .gallery-thumb:hover {
+
+            transform: scale(1.02);
+
+            border-color: var(--accent);
+
+        }
+
+
+
+        /* LIGHTBOX */
+
+        .lightbox {
+
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            background: rgba(0, 0, 0, 0.95);
+
+            z-index: 3000;
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+
+        .lightbox.active {
+
+            display: flex;
+
+        }
+
+
+
+        .lightbox-content {
+
+            position: relative;
+
+            max-width: 90%;
+
+            max-height: 90vh;
+
+        }
+
+
+
+        .lightbox-image {
+
+            max-width: 100%;
+
+            max-height: 90vh;
+
+            background: var(--sidebar-bg);
+
+            border: 2px solid var(--border);
+
+        }
+
+
+
+        .lightbox-close {
+
+            position: absolute;
+
+            top: -40px;
+
+            right: 0;
+
+            background: none;
+
+            border: none;
+
+            color: white;
+
+            font-size: 2rem;
+
+            cursor: pointer;
+
+            width: 40px;
+
+            height: 40px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+
+        .lightbox-close:hover {
+
+            color: var(--accent);
+
+        }
+
+
+
+        .lightbox-nav {
+
+            position: absolute;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            background: rgba(0, 0, 0, 0.5);
+
+            border: none;
+
+            color: white;
+
+            font-size: 2rem;
+
+            cursor: pointer;
+
+            width: 50px;
+
+            height: 50px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+
+        .lightbox-nav:hover {
+
+            background: rgba(0, 0, 0, 0.8);
+
+            color: var(--accent);
+
+        }
+
+
+
+        .lightbox-prev {
+
+            left: -60px;
+
+        }
+
+
+
+        .lightbox-next {
+
+            right: -60px;
+
+        }
+
+
+
+        /* EDUCATION */
+
+        .education {
+
+            padding: 1.2rem;
+
+            background: var(--card-bg);
+
+        }
+
+
+
+        .education-title {
+
+            font-size: 1.1rem;
+
+            font-weight: 500;
+
+            margin-bottom: 0.3rem;
+
+        }
+
+
+
+        .education-meta {
+
+            font-size: 0.8rem;
+
+            color: var(--muted);
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.05em;
+
+            margin-bottom: 0.5rem;
+
+            font-weight: 500;
+
+        }
+
+
+
+        .education-details {
+
+            color: var(--muted);
+
+            font-size: 0.9rem;
+
+        }
+
+
+
+        /* LISTS */
+
+        .info-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+            gap: 2rem;
+
+        }
+
+
+
+        .info-section {
+
+            background: var(--card-bg);
+
+            padding: 1.5rem;
+
+            border-left: 3px solid var(--accent);
+
+        }
+
+
+
+        .info-title {
+
+            font-size: 0.85rem;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.1em;
+
+            color: var(--accent);
+
+            margin-bottom: 1rem;
+
+            font-weight: 700;
+
+        }
+
+
+
+        .info-list {
+
+            list-style: none;
+
+            padding: 0;
+
+        }
+
+
+
+        .info-list li {
+
+            padding: 0.4rem 0;
+
+            font-size: 0.9rem;
+
+            color: var(--text);
+
+            position: relative;
+
+            padding-left: 1rem;
+
+        }
+
+
+
+        .info-list li:before {
+
+            content: "•";
+
+            position: absolute;
+
+            left: 0;
+
+            color: var(--accent);
+
+            font-weight: bold;
+
+        }
+
+
+
+        .hidden {
+
+            display: none;
+
+        }
+
+
+
         @media (max-width: 768px) {
-            .container { padding: 7rem 1rem 2rem; }
-            .header-container { flex-direction: column; align-items: center; text-align: center; }
-            .gallery-grid { grid-template-columns: 1fr; }
+
+            .container {
+
+                padding: 2rem 1rem;
+
+            }
+
+
+
+            .controls {
+
+                top: 1rem;
+
+                right: 1rem;
+
+                flex-direction: column;
+
+            }
+
+
+
+            .hamburger {
+
+                top: 1rem;
+
+                left: 1rem;
+
+            }
+
+
+
+            .side-menu {
+
+                width: 280px;
+
+                left: -280px;
+
+            }
+
+
+
+            .header-container {
+
+                flex-direction: column;
+
+                align-items: center;
+
+                text-align: center;
+
+            }
+
+
+
+            .profile-photo {
+
+                width: 120px;
+
+                height: 120px;
+
+            }
+
+
+
+            h1 {
+
+                font-size: 2rem;
+
+            }
+
+
+
+            .info-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+
+            .gallery-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+
+            .lightbox-prev {
+
+                left: 10px;
+
+            }
+
+
+
+            .lightbox-next {
+
+                right: 10px;
+
+            }
+
         }
+
     </style>
+
 </head>
+
 <body>
 
-    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-    
-    <div class="controls">
-        <div class="lang-switch">
-            <button class="lang-btn active" data-lang="pl">PL</button>
-            <button class="lang-btn" data-lang="en">EN</button>
-            <button class="lang-btn" data-lang="de">DE</button>
-        </div>
-        <button class="theme-btn" id="themeBtn">
-            <svg viewBox="0 0 24 24"><path d="M12 18c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6zm0-10c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zM13 3h-2v3h2V3zm0 15h-2v3h2v-3zM6.3 6.3L4.9 4.9 3.5 6.3l1.4 1.4 1.4-1.4zM19.1 19.1l-1.4-1.4-1.4 1.4 1.4 1.4 1.4-1.4zM3 13v-2h3v2H3zm15 0v-2h3v2h-3zM6.3 17.7L4.9 19.1l1.4 1.4 1.4-1.4-1.4-1.4zM19.1 4.9l-1.4 1.4 1.4 1.4 1.4-1.4-1.4-1.4z"/></svg>
-        </button>
+    <!-- HAMBURGER MENU -->
+
+    <div class="hamburger" id="hamburger">
+
+        <span></span>
+
+        <span></span>
+
+        <span></span>
+
     </div>
+
+
+
+    <!-- SIDE MENU -->
 
     <div class="menu-overlay" id="menuOverlay"></div>
+
     <nav class="side-menu" id="sideMenu">
+
         <div class="menu-section">
-            <div class="menu-title" id="navTitle">Nawigacja</div>
-            <a href="#about" class="menu-link">O mnie</a>
-            <a href="#experience" class="menu-link">Doświadczenie</a>
-            <a href="#licenses" class="menu-link">Uprawnienia UDT</a>
+
+            <div class="menu-title" data-pl="Nawigacja" data-en="Navigation" data-de="Navigation">Nawigacja</div>
+
+            <a href="#about" class="menu-link" data-pl="O mnie" data-en="About Me" data-de="Über mich">O mnie</a>
+
+            <a href="#experience" class="menu-link" data-pl="Doświadczenie" data-en="Experience" data-de="Erfahrung">Doświadczenie</a>
+
+            <a href="#education" class="menu-link" data-pl="Edukacja" data-en="Education" data-de="Ausbildung">Edukacja</a>
+
+            <a href="#licenses" class="menu-link" data-pl="Uprawnienia (UDT)" data-en="Licenses (UDT)" data-de="Lizenzen (UDT)">Uprawnienia (UDT)</a>
+
+            <a href="#skills" class="menu-link" data-pl="Umiejętności" data-en="Skills" data-de="Fähigkeiten">Umiejętności</a>
+
+            <a href="#languages" class="menu-link" data-pl="Języki" data-en="Languages" data-de="Sprachen">Języki</a>
+
+            <a href="#hobbies" class="menu-link" data-pl="Zainteresowania" data-en="Hobbies" data-de="Hobbys">Zainteresowania</a>
+
         </div>
+
+
+
         <div class="menu-section">
+
             <div class="menu-title">CV</div>
+
             <div class="cv-links">
-                <a href="CV_Maciej_Miernik_PL.pdf" class="cv-link">Pobierz CV [PL]</a>
-                <a href="CV_Maciej_Miernik_EN.pdf" class="cv-link">Pobierz CV [EN]</a>
+
+                <a href="CV_Maciej_Miernik_PL.pdf" class="cv-link" target="_blank" rel="noopener">
+
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>
+
+                    CV [PL]
+
+                </a>
+
+                <a href="CV_Maciej_Miernik_EN.pdf" class="cv-link" target="_blank" rel="noopener">
+
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>
+
+                    CV [EN]
+
+                </a>
+
+                <a href="CV_Maciej_Miernik_DE.pdf" class="cv-link disabled">
+
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>
+
+                    CV [DE]
+
+                </a>
+
             </div>
+
         </div>
-    </nav>
 
-    <div class="content" data-lang="pl">
-        <div class="container">
-            <div class="header-container" id="about">
-                <div class="profile-photo"></div>
-                <div>
-                    <h1>Maciej Miernik</h1>
-                    <p class="profile-text">Monter i mechanik z 12-letnim doświadczeniem w Polsce i Skandynawii. Specjalista od hydrauliki siłowej, zaawansowanego serwisu rowerowego oraz mechaniki precyzyjnej. Od budowy systemów dla energetyki wiatrowej po renowację klasycznych Porsche.</p>
-                </div>
-            </div>
-            
-            <section class="section" id="experience">
-                <h2>Doświadczenie</h2>
-                <div class="job" data-job="liftra">
-                    <div class="job-title">Monter <span class="company">| LIFTRA</span></div>
-                    <div class="job-meta">Lipiec 2023 – Obecnie | Szczecin</div>
-                    <ul class="job-description">
-                        <li>Precyzyjna praca z dokumentacją i rysunkiem technicznym</li>
-                        <li>Montaż podzespołów mechanicznych i hydrauliki siłowej</li>
-                    </ul>
-                    <div class="more-link">Więcej</div>
-                </div>
-                <div class="job" data-job="halogaland">
-                    <div class="job-title">Stolarz <span class="company">| HÅLOGALAND ELEMENT AS</span></div>
-                    <div class="job-meta">Kwiecień 2022 – Wrzesień 2022 | Norwegia</div>
-                    <div class="more-link">Więcej</div>
-                </div>
-                <div class="job" data-job="synkros">
-                    <div class="job-title">Starszy mechanik <span class="company">| SYNKROS</span></div>
-                    <div class="job-meta">2018 – 2022 | Szczecin</div>
-                    <div class="more-link">Więcej</div>
-                </div>
-            </section>
 
-            <section class="section" id="licenses">
-                <h2>Uprawnienia (UDT)</h2>
-                <div class="info-section">
-                    <ul class="info-list">
-                        <li>Żurawie stacjonarne</li>
-                        <li>Podesty ruchome przejezdne</li>
-                        <li>Wózki jezdniowe podnośnikowe</li>
-                    </ul>
-                </div>
-            </section>
+
+        <div class="menu-section">
+
+            <div class="menu-title" data-pl="Galeria" data-en="Gallery" data-de="Galerie">Galeria</div>
+
+            <a class="menu-link disabled" data-pl="Praca" data-en="Work" data-de="Arbeit">Praca</a>
+
+            <a class="menu-link disabled" data-pl="Serwis" data-en="Service" data-de="Service">Serwis</a>
+
         </div>
-    </div>
 
-    <div class="content hidden" data-lang="en">
-        <div class="container">
-            <div class="header-container">
-                <div class="profile-photo"></div>
-                <div>
-                    <h1>Maciej Miernik</h1>
-                    <p class="profile-text">Fitter and mechanic with 12 years of experience in Poland and Scandinavia. Specialist in power hydraulics and precision mechanics.</p>
-                </div>
-            </div>
-            <section class="section">
-                <h2>Experience</h2>
-                <div class="job" data-job="liftra">
-                    <div class="job-title">Assembly Fitter <span class="company">| LIFTRA</span></div>
-                    <div class="job-meta">July 2023 – Present | Szczecin</div>
-                    <div class="more-link">More</div>
-                </div>
-            </section>
-        </div>
-    </div>
 
-    <div class="content hidden" data-lang="de">
-        <div class="container">
-            <div class="header-container">
-                <div class="profile-photo"></div>
-                <div>
-                    <h1>Maciej Miernik</h1>
-                    <p class="profile-text">Monteur und Mechaniker mit 12 Jahren Erfahrung in Polen und Skandinavien. Spezialist für Hydraulik und Feinmechanik.</p>
-                </div>
-            </div>
-            <section class="section">
-                <h2>Berufserfahrung</h2>
-                <div class="job" data-job="liftra">
-                    <div class="job-title">Monteur <span class="company">| LIFTRA</span></div>
-                    <div class="job-meta">Juli 2023 – Heute | Szczecin</div>
-                    <div class="more-link">Mehr</div>
-                </div>
-            </section>
-        </div>
-    </div>
 
-    <div class="modal" id="jobModal">
-        <div class="modal-content">
-            <div class="modal-close"><button class="close-btn">&times;</button></div>
-            <div class="modal-body" id="modalBody">
-                </div>
-        </div>
-    </div>
+        <div class="menu-section">
 
-    <script>
-        // CONFIG & DATA (To jest serce kodu, które zajmuje dużo miejsca)
-        const jobDetails = {
-            pl: {
-                liftra: {
-                    title: "Monter",
-                    company: "LIFTRA",
-                    meta: "Lipiec 2023 – Obecnie | Szczecin",
-                    desc: "Kompleksowy montaż systemów dźwigowych LT1200 oraz BLADEHAWK. Praca z rysunkiem technicznym i systemami hydrauliki wysokociśnieniowej.",
-                    loc: "ul. Gdańska, Szczecin",
-                    map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2375.9!2d14.58!"
-                },
-                halogaland: {
-                    title: "Stolarz",
-                    company: "HÅLOGALAND ELEMENT AS",
-                    meta: "2022 | Norwegia",
-                    desc: "Produkcja prefabrykowanych elementów konstrukcyjnych w Norwegii. Obsługa maszyn stolarskich i praca wg norweskich norm jakościowych.",
-                    loc: "Risøyhamn, Norwegia",
-                    map: ""
-                }
-            },
-            en: {
-                liftra: {
-                    title: "Assembly Fitter",
-                    company: "LIFTRA",
-                    meta: "July 2023 – Present | Szczecin",
-                    desc: "Assembly of crane systems LT1200 and BLADEHAWK. Working with technical drawings and high-pressure hydraulic systems.",
-                    loc: "Gdanska Street, Szczecin",
-                    map: ""
-                }
-            },
-            de: {
-                liftra: {
-                    title: "Monteur",
-                    company: "LIFTRA",
-                    meta: "Juli 2023 – Heute | Szczecin",
-                    desc: "Montage von Kransystemen LT1200 und BLADEHAWK. Arbeit mit technischen Zeichnungen und Hochdruckhydrauliksystemen.",
-                    loc: "Gdanska Str., Stettin",
-                    map: ""
-                }
-            }
-        };
+            <div class="menu-title" data-pl="Kontakt" data-en="Contact" data-de="Kontakt">Kontakt</div>
 
-        // UI ELEMENTS
-        const hamburger = document.getElementById('hamburger');
-        const sideMenu = document.getElementById('sideMenu');
-        const overlay = document.getElementById('menuOverlay');
-        const themeBtn = document.getElementById('themeBtn');
-        const langBtns = document.querySelectorAll('.lang-btn');
-        const contents = document.querySelectorAll('.content');
-        const modal = document.getElementById('jobModal');
-        const modalBody = document.getElementById('modalBody');
+            <div class="social-links">
 
-        // HAMBURGER
-        function toggleMenu() {
-            hamburger.classList.toggle('active');
-            sideMenu.classList.toggle('active');
-            overlay.classList.toggle('active');
-        }
-        hamburger.onclick = toggleMenu;
-        overlay.onclick = toggleMenu;
+                <a href="https://www.linkedin.com/in/maciej-miernik/" class="social-link" target="_blank" rel="noopener">
 
-        // THEME
-        themeBtn.onclick = () => {
-            const current = document.documentElement.getAttribute('data-theme');
-            document.documentElement.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
-        };
+                    <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
 
-        // LANGUAGE SWITCH
-        langBtns.forEach(btn => {
-            btn.onclick = () => {
-                const lang = btn.dataset.lang;
-                langBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                contents.forEach(c => {
-                    c.classList.toggle('hidden', c.dataset.lang !== lang);
-                });
-            };
-        });
+                    LinkedIn
 
-        // MODAL LOGIC
-        document.querySelectorAll('.job').forEach(card => {
-            card.onclick = () => {
-                const id = card.dataset.job;
-                const lang = document.querySelector('.lang-btn.active').dataset.lang;
-                const data = jobDetails[lang][id] || jobDetails['pl'][id];
+                </a>
 
-                modalBody.innerHTML = `
-                    <h2 class="modal-title">${data.title}</h2>
-                    <div class="modal-company">${data.company}</div>
-                    <div class="modal-meta">${data.meta}</div>
-                    <div class="modal-description">
-                        <h3>O Projekcie</h3>
-                        <p>${data.desc}</p>
-                    </div>
-                    <div class="modal-location">
-                        <h3>Lokalizacja</h3>
-                        <p>${data.loc}</p>
-                        ${data.map ? `<iframe class="map-preview" src="${data.map}" allowfullscreen loading="lazy"></iframe>` : ''}
-                    </div>
-                    <div class="modal-gallery">
-                        <h3>Galeria</h3>
-                        <div class="gallery-grid">
-                            <div class="gallery-thumb" style="background: #ccc; display:flex; align-items:center; justify-content:center;">Foto 1</div>
-                            <div class="gallery-thumb" style="background: #ccc; display:flex; align-items:center; justify-content:center;">Foto 2</div>
-                        </div>
-                    </div>
-                `;
-                modal.classList.add('active');
-            };
-        });
+                <a href="https://www.instagram.com/mackezzy_wheel_builder/" class="social-link" target="_blank" rel="noopener">
 
-        document.querySelector('.close-btn').onclick = () => modal.classList.remove('active');
-        window.onclick = (e) => { if (e.target === modal) modal.classList.remove('active'); };
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
 
-    </script>
-</body>
-</html>
+                    Instagram
+
+                </a>
+
+                <a href="mailto:miernik.maciek@gmail.com" class="social-link">
+
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+
+                    Email
+
+                </a>
+
+                <span class="social-link disabled">
+
+                    <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.0
