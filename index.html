@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maciej Miernik - CV</title>
+    <title>Maciej Miernik - Interaktywne CV</title>
+    
+    <meta name="description" content="Maciej Miernik - Specjalista Mechanik i Monter. 12 lat doświadczenia w Polsce i Skandynawii.">
+    <meta property="og:title" content="Maciej Miernik - CV & Portfolio">
+    <meta property="og:description" content="Monter systemów dźwigowych, mechanik precyzyjny, hydraulika siłowa.">
+    <meta property="og:type" content="website">
+
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -24,1765 +30,214 @@
             --border: #333333;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Roboto', sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
-            font-size: 15px;
             transition: all 0.3s;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 6rem 2rem 2rem;
-        }
+        .container { max-width: 900px; margin: 0 auto; padding: 6rem 2rem 2rem; }
 
         /* HAMBURGER */
         .hamburger {
-            position: fixed;
-            top: 1.5rem;
-            left: 1.5rem;
-            z-index: 1000;
-            width: 40px;
-            height: 40px;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 6px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: fixed; top: 1.5rem; left: 1.5rem; z-index: 1000;
+            width: 40px; height: 40px; background: var(--bg);
+            border: 1px solid var(--border); cursor: pointer;
+            display: flex; flex-direction: column; justify-content: center;
+            align-items: center; gap: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
-
-        .hamburger span {
-            width: 24px;
-            height: 2px;
-            background: var(--text);
-            transition: all 0.3s;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(7px, 7px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
-        }
+        .hamburger span { width: 24px; height: 2px; background: var(--text); transition: 0.3s; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
 
         /* CONTROLS */
-        .controls {
-            position: fixed;
-            top: 1.5rem;
-            right: 1.5rem;
-            display: flex;
-            gap: 0.5rem;
-            z-index: 100;
-        }
-
-        .lang-switch {
-            display: flex;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
+        .controls { position: fixed; top: 1.5rem; right: 1.5rem; display: flex; gap: 0.5rem; z-index: 100; }
+        .lang-switch { display: flex; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
         .lang-btn, .theme-btn {
-            padding: 0.5rem 0.8rem;
-            border: 1px solid var(--border);
-            background: var(--bg);
-            color: var(--muted);
-            cursor: pointer;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            font-weight: 500;
-            transition: all 0.2s;
+            padding: 0.5rem 0.8rem; border: 1px solid var(--border);
+            background: var(--bg); color: var(--muted); cursor: pointer;
+            font-size: 0.75rem; font-weight: 500; transition: 0.2s;
         }
+        .lang-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+        .theme-btn { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
 
-        .lang-btn:not(:last-child) {
-            border-right: none;
-        }
-
-        .lang-btn:hover, .theme-btn:hover {
-            color: var(--text);
-        }
-
-        .lang-btn.active {
-            background: var(--accent);
-            color: white;
-            border-color: var(--accent);
-        }
-
-        .theme-btn {
-            width: 40px;
-            height: 40px;
-            padding: 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .theme-btn svg {
-            width: 20px;
-            height: 20px;
-            fill: var(--text);
-        }
-
-        /* MENU */
-        .menu-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.7);
-            z-index: 998;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-        }
-
-        .menu-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
+        /* SIDE MENU */
+        .menu-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 998; opacity: 0; visibility: hidden; transition: 0.3s; }
+        .menu-overlay.active { opacity: 1; visibility: visible; }
         .side-menu {
-            position: fixed;
-            top: 0;
-            left: -340px;
-            width: 340px;
-            height: 100vh;
-            background: var(--bg);
-            border-right: 1px solid var(--border);
-            z-index: 999;
-            transition: left 0.3s;
-            overflow-y: auto;
-            padding: 5rem 2rem 2rem;
-            box-shadow: 2px 0 16px rgba(0,0,0,0.2);
+            position: fixed; top: 0; left: -340px; width: 340px; height: 100vh;
+            background: var(--bg); border-right: 1px solid var(--border); z-index: 999;
+            transition: 0.3s; padding: 5rem 2rem;
         }
+        .side-menu.active { left: 0; }
+        .menu-link { display: block; padding: 0.8rem 0; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); }
+        .cv-link { display: block; margin-top: 10px; padding: 10px; background: var(--accent); color: white; text-align: center; text-decoration: none; }
 
-        .side-menu.active {
-            left: 0;
+        /* SECTIONS & CARDS */
+        .section { margin-bottom: 3rem; }
+        h1 { font-size: 2.5rem; font-weight: 300; margin-bottom: 1rem; }
+        h2 { color: var(--accent); border-bottom: 2px solid var(--accent); padding-bottom: 5px; margin-bottom: 20px; text-transform: uppercase; font-size: 1.1rem; }
+        .job, .info-section { 
+            padding: 1.5rem; background: var(--card-bg); border-left: 4px solid var(--accent); 
+            margin-bottom: 1rem; cursor: pointer; transition: 0.3s; 
         }
-
-        .menu-section {
-            margin-bottom: 2rem;
-        }
-
-        .menu-title {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--muted);
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border);
-            font-weight: 500;
-        }
-
-        .menu-link {
-            display: flex;
-            align-items: center;
-            padding: 0.8rem 0;
-            color: var(--text);
-            text-decoration: none;
-            transition: color 0.2s;
-            cursor: pointer;
-        }
-
-        .menu-link svg {
-            flex-shrink: 0;
-        }
-
-        .menu-link:hover:not(.disabled) {
-            color: var(--accent);
-        }
-
-        .menu-link.disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-        }
-
-        .cv-links {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-
-        .cv-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.8rem 1rem;
-            background: var(--accent);
-            color: white;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: background 0.2s;
-        }
-
-        .cv-link:hover:not(.disabled) {
-            background: #3461b0;
-        }
-
-        .cv-link.disabled {
-            background: var(--muted);
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .social-links {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-
-        .social-link {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            padding: 0.8rem 0;
-            color: var(--text);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .social-link:hover:not(.disabled) {
-            color: var(--accent);
-        }
-
-        .social-link.disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-            pointer-events: none;
-        }
-
-        svg {
-            width: 16px;
-            height: 16px;
-            fill: currentColor;
-        }
-
-        .social-link svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        /* HEADER */
-        .header-container {
-            display: flex;
-            gap: 2rem;
-            align-items: flex-start;
-            margin-bottom: 3rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 2px solid var(--accent);
-        }
-
-        .profile-photo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: url('photo.jpg') center/cover no-repeat, var(--card-bg);
-            border: 3px solid var(--accent);
-            flex-shrink: 0;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 300;
-            margin-bottom: 1rem;
-        }
-
-        .profile-text {
-            font-size: 1rem;
-            color: var(--muted);
-            line-height: 1.7;
-        }
-
-        /* SECTIONS */
-        .section {
-            margin-bottom: 3rem;
-        }
-
-        h2 {
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--accent);
-        }
-
-        /* CARDS */
-        .job, .education, .info-section {
-            padding: 1.2rem;
-            background: var(--card-bg);
-            border-left: 3px solid var(--accent);
-            margin-bottom: 1.5rem;
-            transition: all 0.3s;
-        }
-
-        .job {
-            cursor: pointer;
-        }
-
-        .job:hover {
-            transform: translateX(4px);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .job-title, .education-title {
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-bottom: 0.3rem;
-        }
-
-        .company {
-            font-weight: 300;
-            color: var(--muted);
-        }
-
-        .job-meta, .education-meta {
-            font-size: 0.8rem;
-            color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.8rem;
-            font-weight: 500;
-        }
-
-        .job-description {
-            color: var(--muted);
-            line-height: 1.7;
-            font-size: 0.9rem;
-        }
-
-        .job-description li {
-            margin-left: 1.2rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .more-link {
-            font-size: 0.8rem;
-            color: var(--accent);
-            margin-top: 0.8rem;
-            font-weight: 500;
-        }
-
-        .more-link:after {
-            content: " →";
-        }
-
-        .education-details {
-            color: var(--muted);
-            font-size: 0.9rem;
-        }
-
-        /* LISTS */
-        .info-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .info-list li {
-            padding: 0.4rem 0 0.4rem 1rem;
-            font-size: 0.9rem;
-            position: relative;
-        }
-
-        .info-list li:before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-weight: bold;
-        }
+        .job:hover { transform: translateX(5px); }
+        .job-title { font-weight: 700; font-size: 1.1rem; }
+        .job-meta { font-size: 0.85rem; color: var(--muted); margin-bottom: 10px; }
 
         /* MODAL */
-        .modal {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.8);
-            z-index: 2000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-            padding: 1rem;
-        }
+        .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 20px; }
+        .modal.active { display: flex; }
+        .modal-content { background: var(--bg); width: 100%; max-width: 600px; padding: 30px; position: relative; max-height: 90vh; overflow-y: auto; }
+        .close-modal { position: absolute; top: 10px; right: 15px; font-size: 2rem; cursor: pointer; }
 
-        .modal.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal-content {
-            background: var(--bg);
-            max-width: 800px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-        }
-
-        .modal-close {
-            position: sticky;
-            top: 0;
-            padding: 1rem;
-            background: var(--bg);
-            border-bottom: 1px solid var(--border);
-            text-align: right;
-            z-index: 10;
-        }
-
-        .close-btn {
-            font-size: 1.5rem;
-            border: none;
-            background: none;
-            cursor: pointer;
-            color: var(--text);
-            width: 40px;
-            height: 40px;
-        }
-
-        .close-btn:hover {
-            color: var(--accent);
-        }
-
-        .modal-body {
-            padding: 2rem;
-        }
-
-        .modal-title {
-            font-size: 1.8rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-
-        .modal-company {
-            font-size: 1.3rem;
-            color: var(--muted);
-            margin-bottom: 0.5rem;
-        }
-
-        .modal-meta {
-            font-size: 0.85rem;
-            color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 2rem;
-        }
-
-        .modal-location {
-            margin: 2rem 0;
-            padding: 1rem;
-            background: var(--card-bg);
-            border-left: 3px solid var(--accent);
-        }
-
-        .modal-location h3 {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--accent);
-            margin-bottom: 0.8rem;
-            font-weight: 700;
-        }
-
-        .map-preview {
-            width: 100%;
-            height: 200px;
-            margin-bottom: 1rem;
-            border: 1px solid var(--border);
-        }
-
-        .map-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.6rem 1.2rem;
-            background: var(--accent);
-            color: white;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .map-link:hover {
-            background: #3461b0;
-        }
-
-        .modal-description {
-            margin-bottom: 2rem;
-        }
-
-        .modal-description h3 {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--accent);
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .modal-description ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .modal-description li {
-            padding: 0.5rem 0 0.5rem 1.5rem;
-            position: relative;
-            line-height: 1.7;
-        }
-
-        .modal-description li:before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-        }
-
-        /* GALLERY */
-        .modal-gallery {
-            margin-top: 2rem;
-        }
-
-        .modal-gallery h3 {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--accent);
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
-
-        .gallery-thumb {
-            width: 100%;
-            height: 200px;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--muted);
-            font-size: 0.85rem;
-            text-align: center;
-            padding: 1rem;
-            transition: all 0.3s;
-        }
-
-        .gallery-thumb:hover {
-            transform: scale(1.02);
-            border-color: var(--accent);
-        }
-
-        /* LIGHTBOX */
-        .lightbox {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.95);
-            z-index: 3000;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .lightbox.active {
-            display: flex;
-        }
-
-        .lightbox-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90vh;
-        }
-
-        .lightbox-image {
-            max-width: 100%;
-            max-height: 90vh;
-            background: var(--card-bg);
-            border: 2px solid var(--border);
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-        }
-
-        .lightbox-close:hover {
-            color: var(--accent);
-        }
-
-        .lightbox-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0,0,0,0.5);
-            border: none;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-            width: 50px;
-            height: 50px;
-        }
-
-        .lightbox-nav:hover {
-            background: rgba(0,0,0,0.8);
-            color: var(--accent);
-        }
-
-        .lightbox-prev {
-            left: -60px;
-        }
-
-        .lightbox-next {
-            right: -60px;
-        }
-
-        .hidden {
-            display: none;
-        }
+        /* PROFILE PHOTO */
+        .header-container { display: flex; gap: 2rem; align-items: center; margin-bottom: 3rem; }
+        .profile-photo { width: 120px; height: 120px; border-radius: 50%; background: #ddd; border: 3px solid var(--accent); flex-shrink: 0; }
 
         @media (max-width: 768px) {
-            .container {
-                padding: 7rem 1rem 2rem;
-            }
-
-            .header-container {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-
-            .profile-photo {
-                width: 120px;
-                height: 120px;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .lightbox-prev {
-                left: 10px;
-            }
-
-            .lightbox-next {
-                right: 10px;
-            }
+            .header-container { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
 <body>
-    <!-- HAMBURGER -->
-    <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
 
-    <!-- CONTROLS -->
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    
     <div class="controls">
         <div class="lang-switch">
-            <button class="lang-btn active" data-lang="pl">PL</button>
-            <button class="lang-btn" data-lang="en">EN</button>
-            <button class="lang-btn" data-lang="de">DE</button>
+            <button class="lang-btn active" onclick="setLang('pl')">PL</button>
+            <button class="lang-btn" onclick="setLang('en')">EN</button>
+            <button class="lang-btn" onclick="setLang('de')">DE</button>
         </div>
-        <button class="theme-btn" id="themeBtn">
-            <svg viewBox="0 0 24 24">
-                <path d="M12 18c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6zm0-10c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zM13 3h-2v3h2V3zm0 15h-2v3h2v-3zM6.3 6.3L4.9 4.9 3.5 6.3l1.4 1.4 1.4-1.4zM19.1 19.1l-1.4-1.4-1.4 1.4 1.4 1.4 1.4-1.4zM3 13v-2h3v2H3zm15 0v-2h3v2h-3zM6.3 17.7L4.9 19.1l1.4 1.4 1.4-1.4-1.4-1.4zM19.1 4.9l-1.4 1.4 1.4 1.4 1.4-1.4-1.4-1.4z"/>
-            </svg>
-        </button>
+        <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">🌓</button>
     </div>
 
-    <!-- MENU OVERLAY -->
     <div class="menu-overlay" id="menuOverlay"></div>
-
-    <!-- SIDE MENU -->
     <nav class="side-menu" id="sideMenu">
-        <div class="menu-section">
-            <div class="menu-title" data-pl="Dodatkowe" data-en="Additional" data-de="Zusätzlich">Dodatkowe</div>
-            <a href="#licenses" class="menu-link" data-pl="Uprawnienia UDT" data-en="UDT Licenses" data-de="UDT-Lizenzen">
-                <svg viewBox="0 0 24 24" style="margin-right: 0.5rem;"><path d="M12 2L1 7l11 5 11-5-11-5zM1 17l11 5 11-5M1 12l11 5 11-5"/></svg>
-                Uprawnienia UDT
-            </a>
-            <a class="menu-link disabled" data-pl="Galeria" data-en="Gallery" data-de="Galerie">
-                <svg viewBox="0 0 24 24" style="margin-right: 0.5rem;"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-                Galeria
-            </a>
-        </div>
-
-        <div class="menu-section">
-            <div class="menu-title">CV</div>
-            <div class="cv-links">
-                <a href="CV_Maciej_Miernik_PL.pdf" class="cv-link" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>
-                    CV [PL]
-                </a>
-                <a href="CV_Maciej_Miernik_EN.pdf" class="cv-link" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>
-                    CV [EN]
-                </a>
-                <a class="cv-link disabled">
-                    <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>
-                    CV [DE]
-                </a>
-            </div>
-        </div>
-
-        <div class="menu-section">
-            <div class="menu-title" data-pl="Kontakt" data-en="Contact" data-de="Kontakt">Kontakt</div>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/maciej-miernik/" class="social-link" target="_blank">
-                    <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                    LinkedIn
-                </a>
-                <a href="https://www.instagram.com/mackezzy_wheel_builder/" class="social-link" target="_blank">
-                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                    Instagram
-                </a>
-                <a href="/cdn-cgi/l/email-protection#630e0a06110d0a084d0e02000a060823040e020a0f4d000c0e" class="social-link">
-                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                    Email
-                </a>
-                <span class="social-link disabled">
-                    <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654z"/></svg>
-                    WhatsApp
-                </span>
-                <span class="social-link disabled">
-                    <svg viewBox="0 0 24 24"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7 13.828h4.169"/></svg>
-                    Strava
-                </span>
-            </div>
-        </div>
+        <h3 style="margin-bottom: 15px;">Menu</h3>
+        <a href="#about" class="menu-link">O mnie</a>
+        <a href="#experience" class="menu-link">Doświadczenie</a>
+        <a href="#skills" class="menu-link">Umiejętności</a>
+        <a href="CV_Maciej_Miernik_PL.pdf" class="cv-link">Pobierz CV (PDF)</a>
     </nav>
 
-    <!-- POLISH CONTENT (DEFAULT) -->
-    <div class="content" data-lang="pl">
-        <div class="container">
-            <div class="header-container" id="about">
-                <div class="profile-photo"></div>
-                <div>
-                    <h1>Maciej Miernik</h1>
-                    <p class="profile-text">Monter i mechanik z 12-letnim doświadczeniem w Polsce i Skandynawii. Specjalista od hydrauliki siłowej, zaawansowanego serwisu rowerowego oraz mechaniki precyzyjnej. Od budowy systemów dla energetyki wiatrowej po renowację klasycznych Porsche – w pracy bazuję na precyzyjnym rysunku technicznym, dbałości o detale i standardach BHP.</p>
-                </div>
+    <div class="container">
+        <header class="header-container" id="about">
+            <div class="profile-photo"></div>
+            <div>
+                <h1>Maciej Miernik</h1>
+                <p class="profile-text" data-key="about-text">Monter i mechanik z 12-letnim doświadczeniem w Polsce i Skandynawii. Specjalista od hydrauliki siłowej i mechaniki precyzyjnej.</p>
+            </div>
+        </header>
+
+        <section class="section" id="experience">
+            <h2 data-key="exp-title">Doświadczenie</h2>
+            
+            <div class="job" onclick="openModal('liftra')">
+                <div class="job-title">Monter <span style="color:var(--accent)">| LIFTRA</span></div>
+                <div class="job-meta">2023 - Obecnie | Szczecin</div>
+                <p>Montaż systemów BLADEHAWK i hydrauliki siłowej...</p>
             </div>
 
-            <section class="section" id="experience">
-                <h2>Doświadczenie</h2>
-                
-                <div class="job" data-job="liftra">
-                    <div class="job-title">Monter <span class="company">| LIFTRA</span></div>
-                    <div class="job-meta">Lipiec 2023 – Obecnie | Szczecin</div>
-                    <ul class="job-description">
-                        <li>Precyzyjna praca z dokumentacją i rysunkiem technicznym</li>
-                        <li>Montaż podzespołów mechanicznych i hydrauliki siłowej</li>
-                        <li>Montaż systemów dźwigowych LT1200 oraz BLADEHAWK</li>
-                    </ul>
-                    <div class="more-link">Więcej</div>
-                </div>
-
-                <div class="job" data-job="halogaland">
-                    <div class="job-title">Stolarz <span class="company">| HÅLOGALAND ELEMENT AS</span></div>
-                    <div class="job-meta">Kwiecień 2022 – Wrzesień 2022 | Risøyhamn (Norwegia)</div>
-                    <ul class="job-description">
-                        <li>Produkcja prefabrykowanych elementów zgodnie ze specyfikacją</li>
-                        <li>Obsługa specjalistycznych maszyn i narzędzi stolarskich</li>
-                        <li>Montaż detali konstrukcyjnych z zachowaniem norm jakościowych</li>
-                    </ul>
-                    <div class="more-link">Więcej</div>
-                </div>
-
-                <div class="job" data-job="synkros">
-                    <div class="job-title">Starszy mechanik <span class="company">| SYNKROS</span></div>
-                    <div class="job-meta">Marzec 2018 – Marzec 2022 | Szczecin</div>
-                    <ul class="job-description">
-                        <li>Kompleksowy serwis mechaniczny oraz diagnostyka</li>
-                        <li>Profesjonalne doradztwo techniczne i obsługa klienta</li>
-                        <li>Zarządzanie bieżącą działalnością sklepu i serwisu</li>
-                    </ul>
-                    <div class="more-link">Więcej</div>
-                </div>
-
-                <div class="job" data-job="reincarnation">
-                    <div class="job-title">Mechanik <span class="company">| REIN-CAR-NATION</span></div>
-                    <div class="job-meta">Październik 2017 – Luty 2018 | Stobno</div>
-                    <ul class="job-description">
-                        <li>Kompleksowa renowacja i odbudowa klasycznych modeli Porsche</li>
-                        <li>Precyzyjny montaż elementów oraz podzespołów mechanicznych</li>
-                        <li>Diagnostyka i regeneracja unikatowych komponentów</li>
-                    </ul>
-                    <div class="more-link">Więcej</div>
-                </div>
-
-                <div class="job" data-job="hiperglazur">
-                    <div class="job-title">Doradca klienta <span class="company">| HIPER-GLAZUR</span></div>
-                    <div class="job-meta">Kwiecień 2016 – Wrzesień 2017 | Szczecin</div>
-                    <ul class="job-description">
-                        <li>Profesjonalne doradztwo techniczne w zakresie chemii budowlanej</li>
-                        <li>Obsługa specjalistycznych urządzeń do mieszania farb i tynków</li>
-                        <li>Zarządzanie stanami magazynowymi i logistyką dostaw</li>
-                    </ul>
-                    <div class="more-link">Więcej</div>
-                </div>
-
-                <div class="job" data-job="markona">
-                    <div class="job-title">Zbrojarz - cieśla szalunkowy <span class="company">| MARKONA AB</span></div>
-                    <div class="job-meta">Luty 2014 – Luty 2016 | Enköping (Szwecja)</div>
-                    <ul class="job-description">
-                        <li>Wykonawstwo konstrukcji żelbetowych zgodnie z normami</li>
-                        <li>Montaż systemów szalunkowych na podstawie rys. technicznego</li>
-                        <li>Obsługa specjalistycznego sprzętu budowlanego</li>
-                    </ul>
-                    <div class="more-link">Więcej</div>
-                </div>
-
-                <div class="job" data-job="kadrzynski">
-                    <div class="job-title">Mechanik <span class="company">| KADRZYŃSKI</span></div>
-                    <div class="job-meta">Styczeń 2012 – Grudzień 2013 | Szczecin</div>
-                    <ul class="job-description">
-                        <li>Serwis i konserwacja rowerów wszystkich typów</li>
-                        <li>Montaż oraz przygotowywanie sprzętu do sprzedaży</li>
-                    </ul>
-                    <div class="more-link">Więcej</div>
-                </div>
-            </section>
-
-            <section class="section" id="education">
-                <h2>Edukacja</h2>
-                <div class="education">
-                    <div class="education-title">Technikum Budowlane</div>
-                    <div class="education-meta">2007 – 2011 | Szczecin</div>
-                    <div class="education-details">Technolog robót wykończeniowych w budownictwie</div>
-                </div>
-            </section>
-
-            <section class="section" id="licenses">
-                <h2>Uprawnienia (UDT)</h2>
-                <div class="info-section">
-                    <ul class="info-list">
-                        <li>Żurawie stacjonarne</li>
-                        <li>Podesty ruchome przejezdne</li>
-                        <li>Wózki jezdniowe podnośnikowe</li>
-                        <li>Suwnice, wciągniki i wciągarki</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section class="section" id="skills">
-                <h2>Umiejętności</h2>
-                <div class="info-section">
-                    <ul class="info-list">
-                        <li>Czytanie rysunku technicznego</li>
-                        <li>Czytanie dokumentacji złożeniowej</li>
-                        <li>Obsługa specjalistycznych narzędzi</li>
-                        <li>Profesjonalny serwis rowerowy</li>
-                        <li>Mechanika precyzyjna</li>
-                        <li>Montaż i diagnostyka hydrauliki siłowej</li>
-                        <li>Wysoka kultura techniczna</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section class="section" id="languages">
-                <h2>Języki</h2>
-                <div class="info-section">
-                    <ul class="info-list">
-                        <li>Angielski (komunikatywny)</li>
-                        <li>Hiszpański (uczę się)</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section class="section" id="hobbies">
-                <h2>Zainteresowania</h2>
-                <div class="info-section">
-                    <ul class="info-list">
-                        <li>Kolarstwo (enduro, gravel)</li>
-                        <li>Mechanika</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section class="section" id="work-map">
-                <h2>Mapa Miejsc Pracy</h2>
-                <div style="width: 100%; height: 400px; border: 1px solid var(--border); margin-top: 1rem; background: var(--card-bg); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.9rem;">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m52!1m12!1m3!1d4500000!2d15.05!3d56.54!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m37!3e0!4m5!1s0x47aa0bd49aa1673d%3A0x707788d4ac5f2223!2sLiftra%20Sp.%20z%20o.o.%2C%20Szczecin!3m2!1d53.458284!2d14.586271!4m5!1s0x45dc5877709f2001%3A0x3bcce851cb72bb26!2sH%C3%A5logaland%20Element%20AS%2C%20Ris%C3%B8yhamn!3m2!1d68.949558!2d15.654064!4m5!1s0x47aa0939aaa93969%3A0x74f29335a55a37a!2sSynkros%2C%20Szczecin!3m2!1d53.434836!2d14.530719!4m5!1s0x47aa0edf3ab79ef1%3A0x3dcca684f13df971!2sReincarnation-classic%20car!3m2!1d53.414717!2d14.426069!4m5!1s0x465e51d9229710a5%3A0xc9b7d5e9ded0f1ba!2sMarkona%2C%20Enk%C3%B6ping!3m2!1d59.644367!2d17.122567!5e0!3m2!1spl!2spl!4v1234567890!5m2!1spl!2spl" 
-                        width="100%" 
-                        height="100%" 
-                        style="border:0;"
-                        allowfullscreen="" 
-                        loading="lazy">
-                    </iframe>
-                </div>
-            </section>
-        </div>
-    </div>
-
-    <!-- ENGLISH CONTENT -->
-    <div class="content hidden" data-lang="en">
-        <div class="container">
-            <div class="header-container">
-                <div class="profile-photo"></div>
-                <div>
-                    <h1>Maciej Miernik</h1>
-                    <p class="profile-text">Assembler and mechanic with 12 years of experience in Poland and Scandinavia. Specialist in power hydraulics, advanced bicycle servicing, and precision mechanics. From building wind energy systems to renovating classic Porsches - I rely on precise technical drawings, attention to detail, and safety standards.</p>
-                </div>
+            <div class="job" onclick="openModal('synkros')">
+                <div class="job-title">Starszy mechanik <span style="color:var(--accent)">| SYNKROS</span></div>
+                <div class="job-meta">2018 - 2022 | Szczecin</div>
+                <p>Zaawansowany serwis i diagnostyka rowerowa...</p>
             </div>
+        </section>
 
-            <section class="section">
-                <h2>Experience</h2>
-                
-                <div class="job" data-job="liftra">
-                    <div class="job-title">Assembly fitter <span class="company">| LIFTRA</span></div>
-                    <div class="job-meta">July 2023 – Currently | Szczecin</div>
-                    <ul class="job-description">
-                        <li>Precise work with documentation and technical drawings</li>
-                        <li>Assembly of mechanical components and power hydraulics</li>
-                        <li>Assembly of BLADEHAWK and LT1200 crane systems</li>
-                    </ul>
-                    <div class="more-link">More</div>
-                </div>
-
-                <div class="job" data-job="halogaland">
-                    <div class="job-title">Carpenter <span class="company">| HÅLOGALAND ELEMENT AS</span></div>
-                    <div class="job-meta">April 2022 – September 2022 | Risøyhamn (Norway)</div>
-                    <ul class="job-description">
-                        <li>Production of prefabricated elements in accordance with specifications</li>
-                        <li>Operation of specialized carpentry machines and tools</li>
-                        <li>Assembly of structural details in compliance with quality standards</li>
-                    </ul>
-                    <div class="more-link">More</div>
-                </div>
-
-                <div class="job" data-job="synkros">
-                    <div class="job-title">Senior mechanic <span class="company">| SYNKROS</span></div>
-                    <div class="job-meta">March 2018 – March 2022 | Szczecin</div>
-                    <ul class="job-description">
-                        <li>Comprehensive mechanical service and diagnostics</li>
-                        <li>Professional technical advice and customer service</li>
-                        <li>Management of shop and service operations</li>
-                    </ul>
-                    <div class="more-link">More</div>
-                </div>
-
-                <div class="job" data-job="reincarnation">
-                    <div class="job-title">Junior engine mechanic <span class="company">| REIN-CAR-NATION</span></div>
-                    <div class="job-meta">October 2017 – February 2018 | Stobno</div>
-                    <ul class="job-description">
-                        <li>Comprehensive renovation and restoration of classic Porsche models</li>
-                        <li>Precise assembly of mechanical parts and components</li>
-                        <li>Diagnostics and regeneration of unique components</li>
-                    </ul>
-                    <div class="more-link">More</div>
-                </div>
-
-                <div class="job" data-job="hiperglazur">
-                    <div class="job-title">Customer advisor <span class="company">| HIPER-GLAZUR</span></div>
-                    <div class="job-meta">April 2016 – September 2017 | Szczecin</div>
-                    <ul class="job-description">
-                        <li>Professional technical consulting in the field of construction chemicals</li>
-                        <li>Operation of specialized equipment for mixing paints and plasters</li>
-                        <li>Inventory management and delivery logistics</li>
-                    </ul>
-                    <div class="more-link">More</div>
-                </div>
-
-                <div class="job" data-job="markona">
-                    <div class="job-title">Reinforcement worker - formwork carpenter <span class="company">| MARKONA AB</span></div>
-                    <div class="job-meta">February 2014 – February 2016 | Enköping (Sweden)</div>
-                    <ul class="job-description">
-                        <li>Construction of reinforced concrete structures in accordance with standards</li>
-                        <li>Assembly of formwork systems based on technical drawings</li>
-                        <li>Operation of specialized construction equipment</li>
-                    </ul>
-                    <div class="more-link">More</div>
-                </div>
-
-                <div class="job" data-job="kadrzynski">
-                    <div class="job-title">Mechanic <span class="company">| KADRZYŃSKI</span></div>
-                    <div class="job-meta">January 2012 – December 2013 | Szczecin</div>
-                    <ul class="job-description">
-                        <li>Service and maintenance of all types of bicycles</li>
-                        <li>Assembly and pre-sale preparation of equipment</li>
-                    </ul>
-                    <div class="more-link">More</div>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2>Education</h2>
-                <div class="education">
-                    <div class="education-title">Secondary Technical School of Building</div>
-                    <div class="education-meta">2007 – 2011 | Szczecin</div>
-                    <div class="education-details">Technologist Finishing Work / General Construction</div>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2>Technical Licenses (UDT)</h2>
-                <div class="info-section">
-                    <ul class="info-list">
-                        <li>Stationary Cranes</li>
-                        <li>Mobile Elevating Work Platforms</li>
-                        <li>Forklifts</li>
-                        <li>Overhead Cranes</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2>Skills</h2>
-                <div class="info-section">
-                    <ul class="info-list">
-                        <li>Reading technical drawings</li>
-                        <li>Reading assembly documentation</li>
-                        <li>Using specialized tools</li>
-                        <li>Professional bicycle service</li>
-                        <li>Precision mechanics</li>
-                        <li>Installation of power hydraulics</li>
-                        <li>High technical culture</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2>Languages</h2>
-                <div class="info-section">
-                    <ul class="info-list">
-                        <li>English (communicative)</li>
-                        <li>Spanish (learning)</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2>Hobbies</h2>
-                <div class="info-section">
-                    <ul class="info-list">
-                        <li>Cycling (enduro, gravel)</li>
-                        <li>Mechanics</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2>Work Locations Map</h2>
-                <div style="width: 100%; height: 400px; border: 1px solid var(--border); margin-top: 1rem; background: var(--card-bg);">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m52!1m12!1m3!1d4500000!2d15.05!3d56.54!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m37!3e0!4m5!1s0x47aa0bd49aa1673d%3A0x707788d4ac5f2223!2sLiftra%20Sp.%20z%20o.o.%2C%20Szczecin!3m2!1d53.458284!2d14.586271!4m5!1s0x45dc5877709f2001%3A0x3bcce851cb72bb26!2sH%C3%A5logaland%20Element%20AS%2C%20Ris%C3%B8yhamn!3m2!1d68.949558!2d15.654064!4m5!1s0x47aa0939aaa93969%3A0x74f29335a55a37a!2sSynkros%2C%20Szczecin!3m2!1d53.434836!2d14.530719!4m5!1s0x47aa0edf3ab79ef1%3A0x3dcca684f13df971!2sReincarnation-classic%20car!3m2!1d53.414717!2d14.426069!4m5!1s0x465e51d9229710a5%3A0xc9b7d5e9ded0f1ba!2sMarkona%2C%20Enk%C3%B6ping!3m2!1d59.644367!2d17.122567!5e0!3m2!1sen!2spl!4v1234567890!5m2!1sen!2spl" 
-                        width="100%" 
-                        height="100%" 
-                        style="border:0;"
-                        allowfullscreen="" 
-                        loading="lazy">
-                    </iframe>
-                </div>
-            </section>
-        </div>
-    </div>
-
-    <!-- GERMAN CONTENT -->
-    <div class="content hidden" data-lang="de">
-        <div class="container">
-            <div class="header-container">
-                <div class="profile-photo"></div>
-                <div>
-                    <h1>Maciej Miernik</h1>
-                    <p class="profile-text">Monteur und Mechaniker mit 12 Jahren Erfahrung in Polen und Skandinavien. Spezialist für Leistungshydraulik, fortgeschrittenen Fahrradservice und Präzisionsmechanik. Vom Bau von Windenergieanlagen bis zur Restaurierung klassischer Porsches - ich verlasse mich auf präzise technische Zeichnungen, Liebe zum Detail und Sicherheitsstandards.</p>
-                </div>
+        <section class="section">
+            <h2 data-key="map-title">Lokalizacje pracy</h2>
+            <div style="width: 100%; height: 350px; border: 1px solid var(--border);">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1538600.327572622!2d14.545!3d54.4!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spl!2spl!4v1700000000000" 
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
             </div>
-
-            <section class="section">
-                <h2>Berufserfahrung</h2>
-                
-                <div class="job" data-job="liftra">
-                    <div class="job-title">Montagemonteur <span class="company">| LIFTRA</span></div>
-                    <div class="job-meta">Juli 2023 – Derzeit | Stettin</div>
-                    <ul class="job-description">
-                        <li>Präzise Arbeit mit Dokumentation und technischen Zeichnungen</li>
-                        <li>Montage mechanischer Komponenten und Leistungshydraulik</li>
-                        <li>Montage von BLADEHAWK- und LT1200-Krananlagen</li>
-                    </ul>
-                    <div class="more-link">Mehr</div>
-                </div>
-
-                <div class="job" data-job="halogaland">
-                    <div class="job-title">Zimmermann <span class="company">| HÅLOGALAND ELEMENT AS</span></div>
-                    <div class="job-meta">April 2022 – September 2022 | Risøyhamn (Norwegen)</div>
-                    <ul class="job-description">
-                        <li>Herstellung vorgefertigter Elemente nach Spezifikation</li>
-                        <li>Bedienung spezialisierter Tischlereimaschinen und -werkzeuge</li>
-                        <li>Montage struktureller Details unter Einhaltung von Qualitätsstandards</li>
-                    </ul>
-                    <div class="more-link">Mehr</div>
-                </div>
-
-                <div class="job" data-job="synkros">
-                    <div class="job-title">Senior-Mechaniker <span class="company">| SYNKROS</span></div>
-                    <div class="job-meta">März 2018 – März 2022 | Stettin</div>
-                    <ul class="job-description">
-                        <li>Umfassender mechanischer Service und Diagnostik</li>
-                        <li>Professionelle technische Beratung und Kundenservice</li>
-                        <li>Verwaltung des Geschäfts- und Servicebetriebs</li>
-                    </ul>
-                    <div class="more-link">Mehr</div>
-                </div>
-
-                <div class="job" data-job="reincarnation">
-                    <div class="job-title">Junior-Motormechaniker <span class="company">| REIN-CAR-NATION</span></div>
-                    <div class="job-meta">Oktober 2017 – Februar 2018 | Stobno</div>
-                    <ul class="job-description">
-                        <li>Umfassende Renovierung und Restaurierung klassischer Porsche-Modelle</li>
-                        <li>Präzise Montage mechanischer Teile und Komponenten</li>
-                        <li>Diagnostik und Regeneration einzigartiger Komponenten</li>
-                    </ul>
-                    <div class="more-link">Mehr</div>
-                </div>
-
-                <div class="job" data-job="hiperglazur">
-                    <div class="job-title">Kundenberater <span class="company">| HIPER-GLAZUR</span></div>
-                    <div class="job-meta">April 2016 – September 2017 | Stettin</div>
-                    <ul class="job-description">
-                        <li>Professionelle technische Beratung im Bereich Bauchemie</li>
-                        <li>Bedienung spezialisierter Geräte zum Mischen von Farben und Putzen</li>
-                        <li>Bestandsverwaltung und Lieferlogistik</li>
-                    </ul>
-                    <div class="more-link">Mehr</div>
-                </div>
-
-                <div class="job" data-job="markona">
-                    <div class="job-title">Bewehrungsarbeiter - Schalungszimmermann <span class="company">| MARKONA AB</span></div>
-                    <div class="job-meta">Februar 2014 – Februar 2016 | Enköping (Schweden)</div>
-                    <ul class="job-description">
-                        <li>Bau von Stahlbetonkonstruktionen nach Normen</li>
-                        <li>Montage von Schalungssystemen basierend auf technischen Zeichnungen</li>
-                        <li>Bedienung spezialisierter Baugeräte</li>
-                    </ul>
-                    <div class="more-link">Mehr</div>
-                </div>
-
-                <div class="job" data-job="kadrzynski">
-                    <div class="job-title">Mechaniker <span class="company">| KADRZYŃSKI</span></div>
-                    <div class="job-meta">Januar 2012 – Dezember 2013 | Stettin</div>
-                    <ul class="job-description">
-                        <li>Service und Wartung aller Fahrradtypen</li>
-                        <li>Montage und Vorbereitung von Geräten für den Verkauf</li>
-                    </ul>
-                    <div class="more-link">Mehr</div>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2>Ausbildung</h2>
-                <div class="education">
-                    <div class="education-title">Technische Berufsschule für Bauwesen</div>
-                    <div class="education-meta">2007 – 2011 | Stettin</div>
-                    <div class="education-details">Technologe für Ausbauarbeiten im Bauwesen</div>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2>Technische Lizenzen (UDT)</h2>
-                <div class="info-section">
-                    <ul class="info-list">
-                        <li>Stationäre Krane</li>
-                        <li>Mobile Arbeitsbühnen</li>
-                        <li>Gabelstapler</li>
-                        <li>Brückenkrane</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2>Fähigkeiten</h2>
-                <div class="info-section">
-                    <ul class="info-list">
-                        <li>Lesen technischer Zeichnungen</li>
-                        <li>Lesen von Montagedokumentation</li>
-                        <li>Verwendung spezialisierter Werkzeuge</li>
-                        <li>Professioneller Fahrradservice</li>
-                        <li>Präzisionsmechanik</li>
-                        <li>Installation von Leistungshydraulik</li>
-                        <li>Hohe technische Kultur</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2>Sprachen</h2>
-                <div class="info-section">
-                    <ul class="info-list">
-                        <li>Englisch (kommunikativ)</li>
-                        <li>Spanisch (lerne ich)</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2>Hobbys</h2>
-                <div class="info-section">
-                    <ul class="info-list">
-                        <li>Radfahren (Enduro, Gravel)</li>
-                        <li>Mechanik</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section class="section">
-                <h2>Karte der Arbeitsorte</h2>
-                <div style="width: 100%; height: 400px; border: 1px solid var(--border); margin-top: 1rem; background: var(--card-bg);">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m52!1m12!1m3!1d4500000!2d15.05!3d56.54!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m37!3e0!4m5!1s0x47aa0bd49aa1673d%3A0x707788d4ac5f2223!2sLiftra%20Sp.%20z%20o.o.%2C%20Szczecin!3m2!1d53.458284!2d14.586271!4m5!1s0x45dc5877709f2001%3A0x3bcce851cb72bb26!2sH%C3%A5logaland%20Element%20AS%2C%20Ris%C3%B8yhamn!3m2!1d68.949558!2d15.654064!4m5!1s0x47aa0939aaa93969%3A0x74f29335a55a37a!2sSynkros%2C%20Szczecin!3m2!1d53.434836!2d14.530719!4m5!1s0x47aa0edf3ab79ef1%3A0x3dcca684f13df971!2sReincarnation-classic%20car!3m2!1d53.414717!2d14.426069!4m5!1s0x465e51d9229710a5%3A0xc9b7d5e9ded0f1ba!2sMarkona%2C%20Enk%C3%B6ping!3m2!1d59.644367!2d17.122567!5e0!3m2!1sde!2spl!4v1234567890!5m2!1sde!2spl" 
-                        width="100%" 
-                        height="100%" 
-                        style="border:0;"
-                        allowfullscreen="" 
-                        loading="lazy">
-                    </iframe>
-                </div>
-            </section>
-        </div>
+        </section>
     </div>
 
-    <!-- MODAL -->
-    <div class="modal" id="modal">
+    <div class="modal" id="jobModal">
         <div class="modal-content">
-            <div class="modal-close">
-                <button class="close-btn" id="closeBtn">×</button>
-            </div>
-            <div class="modal-body" id="modalBody"></div>
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div id="modalBody">
+                </div>
         </div>
     </div>
 
-    <!-- LIGHTBOX -->
-    <div class="lightbox" id="lightbox">
-        <div class="lightbox-content">
-            <button class="lightbox-close" id="lightboxClose">×</button>
-            <button class="lightbox-nav lightbox-prev" id="prevBtn">‹</button>
-            <img class="lightbox-image" id="lightboxImg" src="" alt="">
-            <button class="lightbox-nav lightbox-next" id="nextBtn">›</button>
-        </div>
-    </div>
+    <script>
+        // 1. OBSŁUGA MENU
+        const ham = document.getElementById('hamburger');
+        const menu = document.getElementById('sideMenu');
+        const overlay = document.getElementById('menuOverlay');
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Job data with corrected GPS coordinates
-        const jobs = {
+        function toggleMenu() {
+            ham.classList.toggle('active');
+            menu.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        ham.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+
+        // 2. TRYB CIEMNY
+        function toggleTheme() {
+            const current = document.body.getAttribute('data-theme');
+            const target = current === 'dark' ? 'light' : 'dark';
+            document.body.setAttribute('data-theme', target);
+            localStorage.setItem('theme', target);
+        }
+        
+        // Ładowanie zapisanego motywu
+        if(localStorage.getItem('theme') === 'dark') document.body.setAttribute('data-theme', 'dark');
+
+        // 3. JĘZYKI
+        const translations = {
+            pl: { "exp-title": "Doświadczenie", "map-title": "Lokalizacje", "about-text": "Monter i mechanik z 12-letnim doświadczeniem..." },
+            en: { "exp-title": "Experience", "map-title": "Work Locations", "about-text": "Mechanic & Fitter with 12 years of experience..." },
+            de: { "exp-title": "Erfahrung", "map-title": "Standorte", "about-text": "Monteur und Mechaniker mit 12 Jahren Erfahrung..." }
+        };
+
+        function setLang(lang) {
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                el.innerText = translations[lang][key];
+            });
+            // Aktywacja przycisku
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // 4. MODAL - SZCZEGÓŁY PRACY
+        const jobData = {
             liftra: {
-                pl: {
-                    title: 'Monter',
-                    company: 'LIFTRA',
-                    period: 'Lipiec 2023 – Obecnie',
-                    address: 'ul. Dębogórska 34',
-                    lat: 53.45828,
-                    lng: 14.58627,
-                    desc: [
-                        'Precyzyjna praca z dokumentacją i rysunkiem technicznym',
-                        'Montaż podzespołów mechanicznych i hydrauliki siłowej',
-                        'Montaż systemów dźwigowych LT1200 oraz BLADEHAWK'
-                    ],
-                    photos: ['liftra_1.jpg', 'liftra_2.jpg']
-                },
-                en: {
-                    title: 'Assembly fitter',
-                    company: 'LIFTRA',
-                    period: 'July 2023 – Currently',
-                    address: 'Dębogórska 34',
-                    lat: 53.45828,
-                    lng: 14.58627,
-                    desc: [
-                        'Precise work with documentation and technical drawings',
-                        'Assembly of mechanical components and power hydraulics',
-                        'Assembly of BLADEHAWK and LT1200 crane systems'
-                    ],
-                    photos: ['liftra_1.jpg', 'liftra_2.jpg']
-                },
-                de: {
-                    title: 'Montagemonteur',
-                    company: 'LIFTRA',
-                    period: 'Juli 2023 – Derzeit',
-                    address: 'Dębogórska 34',
-                    lat: 53.45828,
-                    lng: 14.58627,
-                    desc: [
-                        'Präzise Arbeit mit Dokumentation und technischen Zeichnungen',
-                        'Montage mechanischer Komponenten und Leistungshydraulik',
-                        'Montage von BLADEHAWK- und LT1200-Krananlagen'
-                    ],
-                    photos: ['liftra_1.jpg', 'liftra_2.jpg']
-                }
-            },
-            halogaland: {
-                pl: {
-                    title: 'Stolarz',
-                    company: 'HÅLOGALAND ELEMENT AS',
-                    period: 'Kwiecień 2022 – Wrzesień 2022',
-                    address: 'Risøyhamn',
-                    lat: 68.94956,
-                    lng: 15.65406,
-                    desc: [
-                        'Produkcja prefabrykowanych elementów zgodnie ze specyfikacją',
-                        'Obsługa specjalistycznych maszyn i narzędzi stolarskich',
-                        'Montaż detali konstrukcyjnych z zachowaniem norm jakościowych'
-                    ],
-                    photos: ['halogaland_1.jpg', 'halogaland_2.jpg']
-                },
-                en: {
-                    title: 'Carpenter',
-                    company: 'HÅLOGALAND ELEMENT AS',
-                    period: 'April 2022 – September 2022',
-                    address: 'Risøyhamn',
-                    lat: 68.94956,
-                    lng: 15.65406,
-                    desc: [
-                        'Production of prefabricated elements in accordance with specifications',
-                        'Operation of specialized carpentry machines and tools',
-                        'Assembly of structural details in compliance with quality standards'
-                    ],
-                    photos: ['halogaland_1.jpg', 'halogaland_2.jpg']
-                },
-                de: {
-                    title: 'Zimmermann',
-                    company: 'HÅLOGALAND ELEMENT AS',
-                    period: 'April 2022 – September 2022',
-                    address: 'Risøyhamn',
-                    lat: 68.94956,
-                    lng: 15.65406,
-                    desc: [
-                        'Herstellung vorgefertigter Elemente nach Spezifikation',
-                        'Bedienung spezialisierter Tischlereimaschinen und -werkzeuge',
-                        'Montage struktureller Details unter Einhaltung von Qualitätsstandards'
-                    ],
-                    photos: ['halogaland_1.jpg', 'halogaland_2.jpg']
-                }
+                title: "Monter w Liftra",
+                desc: "Szczegółowy zakres: Montaż LT1200, praca z rysunkiem technicznym, testy hydrauliczne."
             },
             synkros: {
-                pl: {
-                    title: 'Starszy mechanik',
-                    company: 'SYNKROS',
-                    period: 'Marzec 2018 – Marzec 2022',
-                    address: 'ul. 5 Lipca 38/2',
-                    lat: 53.43484,
-                    lng: 14.53072,
-                    desc: [
-                        'Kompleksowy serwis mechaniczny oraz diagnostyka',
-                        'Profesjonalne doradztwo techniczne i obsługa klienta',
-                        'Zarządzanie bieżącą działalnością sklepu i serwisu'
-                    ],
-                    photos: ['synkros_1.jpg', 'synkros_2.jpg']
-                },
-                en: {
-                    title: 'Senior mechanic',
-                    company: 'SYNKROS',
-                    period: 'March 2018 – March 2022',
-                    address: '5 Lipca 38/2',
-                    lat: 53.43484,
-                    lng: 14.53072,
-                    desc: [
-                        'Comprehensive mechanical service and diagnostics',
-                        'Professional technical advice and customer service',
-                        'Management of shop and service operations'
-                    ],
-                    photos: ['synkros_1.jpg', 'synkros_2.jpg']
-                },
-                de: {
-                    title: 'Senior-Mechaniker',
-                    company: 'SYNKROS',
-                    period: 'März 2018 – März 2022',
-                    address: '5 Lipca 38/2',
-                    lat: 53.43484,
-                    lng: 14.53072,
-                    desc: [
-                        'Umfassender mechanischer Service und Diagnostik',
-                        'Professionelle technische Beratung und Kundenservice',
-                        'Verwaltung des Geschäfts- und Servicebetriebs'
-                    ],
-                    photos: ['synkros_1.jpg', 'synkros_2.jpg']
-                }
-            },
-            reincarnation: {
-                pl: {
-                    title: 'Mechanik',
-                    company: 'REIN-CAR-NATION',
-                    period: 'Październik 2017 – Luty 2018',
-                    address: 'Stobno',
-                    lat: 53.41472,
-                    lng: 14.42607,
-                    desc: [
-                        'Kompleksowa renowacja i odbudowa klasycznych modeli Porsche',
-                        'Precyzyjny montaż elementów oraz podzespołów mechanicznych',
-                        'Diagnostyka i regeneracja unikatowych komponentów'
-                    ],
-                    photos: ['reincarnation_1.jpg', 'reincarnation_2.jpg']
-                },
-                en: {
-                    title: 'Junior engine mechanic',
-                    company: 'REIN-CAR-NATION',
-                    period: 'October 2017 – February 2018',
-                    address: 'Stobno',
-                    lat: 53.41472,
-                    lng: 14.42607,
-                    desc: [
-                        'Comprehensive renovation and restoration of classic Porsche models',
-                        'Precise assembly of mechanical parts and components',
-                        'Diagnostics and regeneration of unique components'
-                    ],
-                    photos: ['reincarnation_1.jpg', 'reincarnation_2.jpg']
-                },
-                de: {
-                    title: 'Junior-Motormechaniker',
-                    company: 'REIN-CAR-NATION',
-                    period: 'Oktober 2017 – Februar 2018',
-                    address: 'Stobno',
-                    lat: 53.41472,
-                    lng: 14.42607,
-                    desc: [
-                        'Umfassende Renovierung und Restaurierung klassischer Porsche-Modelle',
-                        'Präzise Montage mechanischer Teile und Komponenten',
-                        'Diagnostik und Regeneration einzigartiger Komponenten'
-                    ],
-                    photos: ['reincarnation_1.jpg', 'reincarnation_2.jpg']
-                }
-            },
-            hiperglazur: {
-                pl: {
-                    title: 'Doradca klienta',
-                    company: 'HIPER-GLAZUR',
-                    period: 'Kwiecień 2016 – Wrzesień 2017',
-                    address: 'ul. Świerczewska 8',
-                    lat: 53.42497,
-                    lng: 14.50881,
-                    desc: [
-                        'Profesjonalne doradztwo techniczne w zakresie chemii budowlanej',
-                        'Obsługa specjalistycznych urządzeń do mieszania farb i tynków',
-                        'Zarządzanie stanami magazynowymi i logistyką dostaw'
-                    ],
-                    photos: ['hiperglazur_1.jpg', 'hiperglazur_2.jpg']
-                },
-                en: {
-                    title: 'Customer advisor',
-                    company: 'HIPER-GLAZUR',
-                    period: 'April 2016 – September 2017',
-                    address: 'Świerczewska 8',
-                    lat: 53.42497,
-                    lng: 14.50881,
-                    desc: [
-                        'Professional technical consulting in the field of construction chemicals',
-                        'Operation of specialized equipment for mixing paints and plasters',
-                        'Inventory management and delivery logistics'
-                    ],
-                    photos: ['hiperglazur_1.jpg', 'hiperglazur_2.jpg']
-                },
-                de: {
-                    title: 'Kundenberater',
-                    company: 'HIPER-GLAZUR',
-                    period: 'April 2016 – September 2017',
-                    address: 'Świerczewska 8',
-                    lat: 53.42497,
-                    lng: 14.50881,
-                    desc: [
-                        'Professionelle technische Beratung im Bereich Bauchemie',
-                        'Bedienung spezialisierter Geräte zum Mischen von Farben und Putzen',
-                        'Bestandsverwaltung und Lieferlogistik'
-                    ],
-                    photos: ['hiperglazur_1.jpg', 'hiperglazur_2.jpg']
-                }
-            },
-            markona: {
-                pl: {
-                    title: 'Zbrojarz - cieśla szalunkowy',
-                    company: 'MARKONA AB',
-                    period: 'Luty 2014 – Luty 2016',
-                    address: 'Kvartsgatan, Enköping',
-                    lat: 59.64437,
-                    lng: 17.12257,
-                    desc: [
-                        'Wykonawstwo konstrukcji żelbetowych zgodnie z normami',
-                        'Montaż systemów szalunkowych na podstawie rys. technicznego',
-                        'Obsługa specjalistycznego sprzętu budowlanego'
-                    ],
-                    photos: ['markona_1.jpg', 'markona_2.jpg']
-                },
-                en: {
-                    title: 'Reinforcement worker - formwork carpenter',
-                    company: 'MARKONA AB',
-                    period: 'February 2014 – February 2016',
-                    address: 'Kvartsgatan, Enköping',
-                    lat: 59.64437,
-                    lng: 17.12257,
-                    desc: [
-                        'Construction of reinforced concrete structures in accordance with standards',
-                        'Assembly of formwork systems based on technical drawings',
-                        'Operation of specialized construction equipment'
-                    ],
-                    photos: ['markona_1.jpg', 'markona_2.jpg']
-                },
-                de: {
-                    title: 'Bewehrungsarbeiter - Schalungszimmermann',
-                    company: 'MARKONA AB',
-                    period: 'Februar 2014 – Februar 2016',
-                    address: 'Kvartsgatan, Enköping',
-                    lat: 59.64437,
-                    lng: 17.12257,
-                    desc: [
-                        'Bau von Stahlbetonkonstruktionen nach Normen',
-                        'Montage von Schalungssystemen basierend auf technischen Zeichnungen',
-                        'Bedienung spezialisierter Baugeräte'
-                    ],
-                    photos: ['markona_1.jpg', 'markona_2.jpg']
-                }
-            },
-            kadrzynski: {
-                pl: {
-                    title: 'Mechanik',
-                    company: 'KADRZYŃSKI',
-                    period: 'Styczeń 2012 – Grudzień 2013',
-                    address: 'ul. Wojska Polskiego 20',
-                    lat: 53.44010,
-                    lng: 14.53395,
-                    desc: [
-                        'Serwis i konserwacja rowerów wszystkich typów',
-                        'Montaż oraz przygotowywanie sprzętu do sprzedaży'
-                    ],
-                    photos: ['kadrzynski_1.jpg', 'kadrzynski_2.jpg']
-                },
-                en: {
-                    title: 'Mechanic',
-                    company: 'KADRZYŃSKI',
-                    period: 'January 2012 – December 2013',
-                    address: 'Wojska Polskiego 20',
-                    lat: 53.44010,
-                    lng: 14.53395,
-                    desc: [
-                        'Service and maintenance of all types of bicycles',
-                        'Assembly and pre-sale preparation of equipment'
-                    ],
-                    photos: ['kadrzynski_1.jpg', 'kadrzynski_2.jpg']
-                },
-                de: {
-                    title: 'Mechaniker',
-                    company: 'KADRZYŃSKI',
-                    period: 'Januar 2012 – Dezember 2013',
-                    address: 'Wojska Polskiego 20',
-                    lat: 53.44010,
-                    lng: 14.53395,
-                    desc: [
-                        'Service und Wartung aller Fahrradtypen',
-                        'Montage und Vorbereitung von Geräten für den Verkauf'
-                    ],
-                    photos: ['kadrzynski_1.jpg', 'kadrzynski_2.jpg']
-                }
+                title: "Starszy mechanik w Synkros",
+                desc: "Zarządzanie serwisem, budowa kół customowych, obsługa amortyzatorów Fox/RockShox."
             }
         };
 
-        let lang = 'pl';
-        let photos = [];
-        let photoIndex = 0;
-
-        // Elements
-        const hamburger = document.getElementById('hamburger');
-        const sideMenu = document.getElementById('sideMenu');
-        const menuOverlay = document.getElementById('menuOverlay');
-        const themeBtn = document.getElementById('themeBtn');
-        const modal = document.getElementById('modal');
-        const modalBody = document.getElementById('modalBody');
-        const closeBtn = document.getElementById('closeBtn');
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightboxImg');
-        const lightboxClose = document.getElementById('lightboxClose');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-
-        // Hamburger menu
-        hamburger.onclick = function() {
-            hamburger.classList.toggle('active');
-            sideMenu.classList.toggle('active');
-            menuOverlay.classList.toggle('active');
-        };
-
-        menuOverlay.onclick = function() {
-            hamburger.classList.remove('active');
-            sideMenu.classList.remove('active');
-            menuOverlay.classList.remove('active');
-        };
-
-        // Menu links
-        document.querySelectorAll('.menu-link').forEach(function(link) {
-            link.onclick = function(e) {
-                e.preventDefault();
-                const target = link.getAttribute('href');
-                if (target && target.startsWith('#')) {
-                    hamburger.classList.remove('active');
-                    sideMenu.classList.remove('active');
-                    menuOverlay.classList.remove('active');
-                    setTimeout(function() {
-                        document.querySelector(target).scrollIntoView({ behavior: 'smooth' });
-                    }, 300);
-                }
-            };
-        });
-
-        // Theme toggle
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-
-        themeBtn.onclick = function() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-        };
-
-        // Language switcher
-        document.querySelectorAll('.lang-btn').forEach(function(btn) {
-            btn.onclick = function() {
-                lang = btn.dataset.lang;
-                document.querySelectorAll('.lang-btn').forEach(function(b) {
-                    b.classList.remove('active');
-                });
-                btn.classList.add('active');
-                document.querySelectorAll('.content').forEach(function(c) {
-                    if (c.dataset.lang !== lang) {
-                        c.classList.add('hidden');
-                    } else {
-                        c.classList.remove('hidden');
-                    }
-                });
-                document.querySelectorAll('[data-pl]').forEach(function(el) {
-                    el.textContent = el.getAttribute('data-' + lang);
-                });
-            };
-        });
-
-        // Modal functions
         function openModal(jobId) {
-            const job = jobs[jobId][lang];
-            const labels = {
-                pl: { loc: 'Lokalizacja', map: 'Zobacz na mapie', resp: 'Zakres obowiązków', gal: 'Galeria zdjęć' },
-                en: { loc: 'Location', map: 'View on Map', resp: 'Responsibilities', gal: 'Photo Gallery' },
-                de: { loc: 'Standort', map: 'Auf Karte anzeigen', resp: 'Verantwortlichkeiten', gal: 'Fotogalerie' }
-            };
-            const l = labels[lang];
-
-            let descHtml = '';
-            for (let i = 0; i < job.desc.length; i++) {
-                descHtml += '<li>' + job.desc[i] + '</li>';
-            }
-
-            let photoHtml = '';
-            for (let i = 0; i < job.photos.length; i++) {
-                const clickText = lang === 'pl' ? 'kliknij aby powiększyć' : lang === 'de' ? 'zum Vergrößern klicken' : 'click to enlarge';
-                photoHtml += '<div class="gallery-thumb" onclick="openLightbox(' + i + ')">' + job.photos[i] + '<br>(' + clickText + ')</div>';
-            }
-
-            modalBody.innerHTML = '<div class="modal-title">' + job.title + '</div>' +
-                '<div class="modal-company">' + job.company + '</div>' +
-                '<div class="modal-meta">' + job.period + '</div>' +
-                '<div class="modal-location">' +
-                '<h3>' + l.loc + '</h3>' +
-                '<p style="margin-bottom:1rem">' + job.address + '</p>' +
-                '<iframe class="map-preview" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=' + job.lat + ',' + job.lng + '&zoom=15" frameborder="0"></iframe>' +
-                '<a href="https://www.google.com/maps/search/?api=1&query=' + job.lat + ',' + job.lng + '" target="_blank" class="map-link">' +
-                '<svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>' +
-                l.map + '</a></div>' +
-                '<div class="modal-description"><h3>' + l.resp + '</h3><ul>' + descHtml + '</ul></div>' +
-                '<div class="modal-gallery"><h3>' + l.gal + '</h3><div class="gallery-grid">' + photoHtml + '</div></div>';
-
-            photos = job.photos;
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            const data = jobData[jobId];
+            document.getElementById('modalBody').innerHTML = `
+                <h2>${data.title}</h2>
+                <p style="margin-top:15px">${data.desc}</p>
+            `;
+            document.getElementById('jobModal').classList.add('active');
         }
 
         function closeModal() {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
+            document.getElementById('jobModal').classList.remove('active');
         }
-
-        // Lightbox functions
-        function openLightbox(index) {
-            photoIndex = index;
-            lightboxImg.src = photos[index];
-            lightbox.classList.add('active');
-        }
-
-        function closeLightbox() {
-            lightbox.classList.remove('active');
-        }
-
-        function showPrev() {
-            photoIndex = (photoIndex - 1 + photos.length) % photos.length;
-            lightboxImg.src = photos[photoIndex];
-        }
-
-        function showNext() {
-            photoIndex = (photoIndex + 1) % photos.length;
-            lightboxImg.src = photos[photoIndex];
-        }
-
-        // Event listeners
-        closeBtn.onclick = closeModal;
-        modal.onclick = function(e) {
-            if (e.target === modal) closeModal();
-        };
-        lightboxClose.onclick = closeLightbox;
-        lightbox.onclick = function(e) {
-            if (e.target === lightbox) closeLightbox();
-        };
-        prevBtn.onclick = showPrev;
-        nextBtn.onclick = showNext;
-
-        // Job cards
-        document.querySelectorAll('.job').forEach(function(job) {
-            job.onclick = function() {
-                openModal(job.dataset.job);
-            };
-        });
-
-        // Keyboard shortcuts
-        document.onkeydown = function(e) {
-            if (e.key === 'Escape') {
-                if (lightbox.classList.contains('active')) {
-                    closeLightbox();
-                } else {
-                    closeModal();
-                }
-            }
-            if (lightbox.classList.contains('active')) {
+    </script>
+</body>
+</html>
