@@ -169,13 +169,7 @@
             font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em;
             color: var(--accent); margin-bottom: 0.8rem; font-weight: 700;
         }
-        .map-preview { width: 100%; height: 200px; margin-bottom: 1rem; border: 1px solid var(--border); }
-        .map-link {
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            padding: 0.6rem 1.2rem; background: var(--accent); color: white;
-            text-decoration: none; font-size: 0.9rem; font-weight: 500;
-        }
-        .map-link:hover { background: #3461b0; }
+        .map-preview { width: 100%; height: 200px; border: 1px solid var(--border); cursor: pointer; }
         .modal-description { margin-bottom: 2rem; }
         .modal-description h3 {
             font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em;
@@ -250,10 +244,14 @@
         <div class="menu-section">
             <div class="menu-title" data-pl="Dodatkowe" data-en="Additional" data-de="Zusätzlich">Dodatkowe</div>
             <a href="#licenses" class="menu-link" data-pl="Uprawnienia UDT" data-en="UDT Licenses" data-de="UDT-Lizenzen">
-                <svg viewBox="0 0 100 100" style="width:26px;height:26px">
-                    <polygon fill="currentColor" points="50,10 20,25 20,35 50,50 80,35 80,25"/>
-                    <path fill="currentColor" d="M30,30 L30,70 L50,85 L70,70 L70,30 M40,35 L40,65 L50,72 L60,65 L60,35"/>
-                    <polygon fill="currentColor" points="20,75 20,85 50,100 80,85 80,75 50,90"/>
+                <svg viewBox="0 0 200 220" style="width:26px;height:26px">
+                    <g fill="currentColor" opacity="0.85">
+                        <polygon points="30,50 100,20 170,50 160,55 100,30 40,55"/>
+                        <polygon points="50,65 100,40 150,65 145,68 100,48 55,68"/>
+                        <path d="M 70,75 L 100,60 L 130,75 L 130,155 L 100,170 L 70,155 Z M 80,82 L 80,148 L 100,158 L 120,148 L 120,82 L 100,72 Z"/>
+                        <polygon points="50,175 100,150 150,175 145,178 100,158 55,178"/>
+                        <polygon points="30,190 100,160 170,190 160,195 100,170 40,195"/>
+                    </g>
                 </svg>
                 Uprawnienia UDT
             </a>
@@ -314,7 +312,7 @@
                 <div class="profile-photo"></div>
                 <div>
                     <h1>Maciej Miernik</h1>
-                    <p class="profile-text">Monter i mechanik z 12-letnim doświadczeniem w Polsce i Skandynawii. Specjalista od hydrauliki siłowej, zaawansowanego serwisu rowerowego oraz mechaniki precyzyjnej. Od budowy systemów dla energetyki wiatrowej po renowację klasycznych Porsche – w pracy bazuję na precyzyjnym rysunku technicznym, dbałości o detale i standardach BHP.</p>
+                    <p class="profile-text">Monter i mechanik z 12-letnim doświadczeniem w Polsce i Skandynawii. Specjalista od zaawansowanego serwisu rowerowego, mechaniki precyzyjnej oraz hydrauliki siłowej. Od budowy systemów dla energetyki wiatrowej po renowację klasycznych Porsche – w pracy bazuję na precyzyjnym rysunku technicznym, dbałości o detale i standardach BHP.</p>
                 </div>
             </div>
             <section class="section" id="experience">
@@ -454,7 +452,7 @@
                 <div class="profile-photo"></div>
                 <div>
                     <h1>Maciej Miernik</h1>
-                    <p class="profile-text">Assembler and mechanic with 12 years of experience in Poland and Scandinavia. Specialist in power hydraulics, advanced bicycle servicing, and precision mechanics. From building wind energy systems to renovating classic Porsches - I rely on precise technical drawings, attention to detail, and safety standards.</p>
+                    <p class="profile-text">Assembler and mechanic with 12 years of experience in Poland and Scandinavia. Specialist in advanced bicycle servicing, precision mechanics, and power hydraulics. From building wind energy systems to renovating classic Porsches - I rely on precise technical drawings, attention to detail, and safety standards.</p>
                 </div>
             </div>
             <section class="section">
@@ -594,7 +592,7 @@
                 <div class="profile-photo"></div>
                 <div>
                     <h1>Maciej Miernik</h1>
-                    <p class="profile-text">Monteur und Mechaniker mit 12 Jahren Erfahrung in Polen und Skandinavien. Spezialist für Leistungshydraulik, fortgeschrittenen Fahrradservice und Präzisionsmechanik. Vom Bau von Windenergieanlagen bis zur Restaurierung klassischer Porsches - ich verlasse mich auf präzise technische Zeichnungen, Liebe zum Detail und Sicherheitsstandards.</p>
+                    <p class="profile-text">Monteur und Mechaniker mit 12 Jahren Erfahrung in Polen und Skandinavien. Spezialist für fortgeschrittenen Fahrradservice, Präzisionsmechanik und Leistungshydraulik. Vom Bau von Windenergieanlagen bis zur Restaurierung klassischer Porsches - ich verlasse mich auf präzise technische Zeichnungen, Liebe zum Detail und Sicherheitsstandards.</p>
                 </div>
             </div>
             <section class="section">
@@ -1046,9 +1044,9 @@ document.querySelectorAll('.lang-btn').forEach(function(btn) {
 function openModal(jobId) {
     const job = jobs[jobId][lang];
     const labels = {
-        pl: { loc: 'Lokalizacja', map: 'Zobacz na mapie', resp: 'Zakres obowiązków', gal: 'Galeria zdjęć' },
-        en: { loc: 'Location', map: 'View on Map', resp: 'Responsibilities', gal: 'Photo Gallery' },
-        de: { loc: 'Standort', map: 'Auf Karte anzeigen', resp: 'Verantwortlichkeiten', gal: 'Fotogalerie' }
+        pl: { loc: 'Lokalizacja', resp: 'Zakres obowiązków', gal: 'Galeria zdjęć' },
+        en: { loc: 'Location', resp: 'Responsibilities', gal: 'Photo Gallery' },
+        de: { loc: 'Standort', resp: 'Verantwortlichkeiten', gal: 'Fotogalerie' }
     };
     const l = labels[lang];
     
@@ -1056,10 +1054,7 @@ function openModal(jobId) {
         '<div class="modal-company">' + job.company + '</div>' +
         '<div class="modal-meta">' + job.period + '</div>' +
         '<div class="modal-location"><h3>' + l.loc + '</h3>' +
-        '<iframe class="map-preview" src="' + job.iframe + '" frameborder="0"></iframe>' +
-        '<a href="https://www.google.com/maps/search/?api=1&query=' + job.lat + ',' + job.lng + '" target="_blank" class="map-link">' +
-        '<svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>' +
-        l.map + '</a></div>' +
+        '<iframe class="map-preview" src="' + job.iframe + '" frameborder="0"></iframe></div>' +
         '<div class="modal-description"><h3>' + l.resp + '</h3><ul>' +
         job.desc.map(function(d) { return '<li>' + d + '</li>'; }).join('') +
         '</ul></div>' +
