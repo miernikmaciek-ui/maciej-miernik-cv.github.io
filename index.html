@@ -169,13 +169,7 @@
             font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em;
             color: var(--accent); margin-bottom: 0.8rem; font-weight: 700;
         }
-        .map-preview { width: 100%; height: 200px; margin-bottom: 1rem; border: 1px solid var(--border); }
-        .map-link {
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            padding: 0.6rem 1.2rem; background: var(--accent); color: white;
-            text-decoration: none; font-size: 0.9rem; font-weight: 500;
-        }
-        .map-link:hover { background: #3461b0; }
+        .map-preview { width: 100%; height: 200px; border: 1px solid var(--border); }
         .modal-description { margin-bottom: 2rem; }
         .modal-description h3 {
             font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em;
@@ -252,21 +246,17 @@
             <a href="#licenses" class="menu-link">
                 <svg viewBox="0 0 100 120" style="width:26px;height:26px;flex-shrink:0">
                     <g fill="currentColor">
-                        <!-- Top bar -->
                         <rect x="15" y="10" width="70" height="8" rx="2"/>
-                        <!-- Outer V -->
                         <path d="M 20,20 L 50,95 L 80,20 L 72,20 L 50,80 L 28,20 Z" opacity="0.9"/>
-                        <!-- Middle V with D -->
                         <path d="M 30,25 L 50,85 L 70,25 L 64,25 L 50,70 L 36,25 Z" opacity="0.85"/>
                         <path d="M 45,40 Q 45,50 50,55 Q 55,50 55,40 L 55,30 L 45,30 Z" opacity="0.9"/>
-                        <!-- Inner V (rounded bottom) -->
                         <path d="M 40,30 L 50,75 L 60,30 L 56,30 L 50,60 L 44,30 Z" opacity="0.8"/>
                         <ellipse cx="50" cy="75" rx="6" ry="8" opacity="0.8"/>
                     </g>
                 </svg>
                 <span data-pl="Uprawnienia UDT" data-en="UDT Licenses" data-de="UDT-Lizenzen">Uprawnienia UDT</span>
             </a>
-            <a class="menu-link disabled">
+            <a id="galleryLink" class="menu-link">
                 <svg viewBox="0 0 24 24" style="width:26px;height:26px;flex-shrink:0">
                     <path fill="currentColor" d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
                 </svg>
@@ -301,7 +291,7 @@
                     <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                     Instagram
                 </a>
-                <a href="/cdn-cgi/l/email-protection#fc9195998e929597d2919d9f959997bc9b919d9590d29f9391" class="social-link">
+                <a href="mailto:miernik.maciek@gmail.com" class="social-link">
                     <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                     Email
                 </a>
@@ -757,24 +747,21 @@
             <button class="lightbox-nav lightbox-next" id="nextBtn">›</button>
         </div>
     </div>
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
 const jobs = {
     liftra: {
         pl: {title: 'Monter', company: 'LIFTRA', period: 'Lipiec 2023 – Obecnie',
             iframe: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1840.4475913998513!2d14.5862710723047!3d53.45828451793121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47aa0bd49aa1673d%3A0x707788d4ac5f2223!2sLiftra%20Sp.%20z%20o.o.!5e1!3m2!1spl!2spl!4v1771163931573!5m2!1spl!2spl',
-            lat: 53.45828, lng: 14.58627,
             desc: ['Precyzyjna praca z dokumentacją i rysunkiem technicznym', 'Montaż podzespołów mechanicznych i hydrauliki siłowej', 'Montaż systemów dźwigowych LT1200 oraz BLADEHAWK'],
             photos: ['./liftra_1.jpg', './liftra_2.jpg']
         },
         en: {title: 'Assembly fitter', company: 'LIFTRA', period: 'July 2023 – Currently',
             iframe: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1840.4475913998513!2d14.5862710723047!3d53.45828451793121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47aa0bd49aa1673d%3A0x707788d4ac5f2223!2sLiftra%20Sp.%20z%20o.o.!5e1!3m2!1sen!2spl!4v1771163931573!5m2!1sen!2spl',
-            lat: 53.45828, lng: 14.58627,
             desc: ['Precise work with documentation and technical drawings', 'Assembly of mechanical components and power hydraulics', 'Assembly of BLADEHAWK and LT1200 crane systems'],
             photos: ['./liftra_1.jpg', './liftra_2.jpg']
         },
         de: {title: 'Montagemonteur', company: 'LIFTRA', period: 'Juli 2023 – Derzeit',
             iframe: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1840.4475913998513!2d14.5862710723047!3d53.45828451793121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47aa0bd49aa1673d%3A0x707788d4ac5f2223!2sLiftra%20Sp.%20z%20o.o.!5e1!3m2!1sde!2spl!4v1771163931573!5m2!1sde!2spl',
-            lat: 53.45828, lng: 14.58627,
             desc: ['Präzise Arbeit mit Dokumentation und technischen Zeichnungen', 'Montage mechanischer Komponenten und Leistungshydraulik', 'Montage von BLADEHAWK- und LT1200-Krananlagen'],
             photos: ['./liftra_1.jpg', './liftra_2.jpg']
         }
@@ -782,19 +769,16 @@ const jobs = {
     halogaland: {
         pl: {title: 'Stolarz', company: 'HÅLOGALAND ELEMENT AS', period: 'Kwiecień 2022 – Wrzesień 2022',
             iframe: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1320.3535623071023!2d15.654064373145312!3d68.94955881708871!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x45dc5877709f2001%3A0x3bcce851cb72bb26!2sH%C3%A5logaland%20Element%20AS!5e1!3m2!1spl!2spl!4v1771164013678!5m2!1spl!2spl',
-            lat: 68.94956, lng: 15.65406,
             desc: ['Produkcja prefabrykowanych elementów zgodnie ze specyfikacją', 'Obsługa specjalistycznych maszyn i narzędzi stolarskich', 'Montaż detali konstrukcyjnych z zachowaniem norm jakościowych'],
             photos: ['./halogaland_1.jpg', './halogaland_2.jpg']
         },
         en: {title: 'Carpenter', company: 'HÅLOGALAND ELEMENT AS', period: 'April 2022 – September 2022',
             iframe: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1320.3535623071023!2d15.654064373145312!3d68.94955881708871!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x45dc5877709f2001%3A0x3bcce851cb72bb26!2sH%C3%A5logaland%20Element%20AS!5e1!3m2!1sen!2spl!4v1771164013678!5m2!1sen!2spl',
-            lat: 68.94956, lng: 15.65406,
             desc: ['Production of prefabricated elements in accordance with specifications', 'Operation of specialized carpentry machines and tools', 'Assembly of structural details in compliance with quality standards'],
             photos: ['./halogaland_1.jpg', './halogaland_2.jpg']
         },
         de: {title: 'Zimmermann', company: 'HÅLOGALAND ELEMENT AS', period: 'April 2022 – September 2022',
             iframe: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1320.3535623071023!2d15.654064373145312!3d68.94955881708871!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x45dc5877709f2001%3A0x3bcce851cb72bb26!2sH%C3%A5logaland%20Element%20AS!5e1!3m2!1sde!2spl!4v1771164013678!5m2!1sde!2spl',
-            lat: 68.94956, lng: 15.65406,
             desc: ['Herstellung vorgefertigter Elemente nach Spezifikation', 'Bedienung spezialisierter Tischlereimaschinen und -werkzeuge', 'Montage struktureller Details unter Einhaltung von Qualitätsstandards'],
             photos: ['./halogaland_1.jpg', './halogaland_2.jpg']
         }
@@ -802,19 +786,16 @@ const jobs = {
     synkros: {
         pl: {title: 'Starszy mechanik', company: 'SYNKROS', period: 'Marzec 2018 – Marzec 2022',
             iframe: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1841.4637997711188!2d14.530718975729943!3d53.43483586810003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47aa0939aaa93969%3A0x74f29335a55a37a!2sSynkros!5e1!3m2!1spl!2spl!4v1771164048713!5m2!1spl!2spl',
-            lat: 53.43484, lng: 14.53072,
             desc: ['Kompleksowy serwis mechaniczny oraz diagnostyka', 'Profesjonalne doradztwo techniczne i obsługa klienta', 'Zarządzanie bieżącą działalnością sklepu i serwisu'],
             photos: ['./synkros_1.jpg', './synkros_2.jpg']
         },
         en: {title: 'Senior mechanic', company: 'SYNKROS', period: 'March 2018 – March 2022',
             iframe: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1841.4637997711188!2d14.530718975729943!3d53.43483586810003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47aa0939aaa93969%3A0x74f29335a55a37a!2sSynkros!5e1!3m2!1sen!2spl!4v1771164048713!5m2!1sen!2spl',
-            lat: 53.43484, lng: 14.53072,
             desc: ['Comprehensive mechanical service and diagnostics', 'Professional technical advice and customer service', 'Management of shop and service operations'],
             photos: ['./synkros_1.jpg', './synkros_2.jpg']
         },
         de: {title: 'Senior-Mechaniker', company: 'SYNKROS', period: 'März 2018 – März 2022',
             iframe: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1841.4637997711188!2d14.530718975729943!3d53.43483586810003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47aa0939aaa93969%3A0x74f29335a55a37a!2sSynkros!5e1!3m2!1sde!2spl!4v1771164048713!5m2!1sde!2spl',
-            lat: 53.43484, lng: 14.53072,
             desc: ['Umfassender mechanischer Service und Diagnostik', 'Professionelle technische Beratung und Kundenservice', 'Verwaltung des Geschäfts- und Servicebetriebs'],
             photos: ['./synkros_1.jpg', './synkros_2.jpg']
         }
@@ -822,19 +803,16 @@ const jobs = {
     reincarnation: {
         pl: {title: 'Mechanik', company: 'REIN-CAR-NATION', period: 'Październik 2017 – Luty 2018',
             iframe: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1842.3354606126536!2d14.426069083415818!3d53.41471692897199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47aa0edf3ab79ef1%3A0x3dcca684f13df971!2sReincarnation!5e1!3m2!1spl!2spl!4v1771164088542!5m2!1spl!2spl',
-            lat: 53.41472, lng: 14.42607,
             desc: ['Kompleksowa renowacja i odbudowa klasycznych modeli Porsche', 'Precyzyjny montaż elementów oraz podzespołów mechanicznych', 'Diagnostyka i regeneracja unikatowych komponentów'],
             photos: ['./reincarnation_1.jpg', './reincarnation_2.jpg']
         },
         en: {title: 'Junior engine mechanic', company: 'REIN-CAR-NATION', period: 'October 2017 – February 2018',
             iframe: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1842.3354606126536!2d14.426069083415818!3d53.41471692897199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47aa0edf3ab79ef1%3A0x3dcca684f13df971!2sReincarnation!5e1!3m2!1sen!2spl!4v1771164088542!5m2!1sen!2spl',
-            lat: 53.41472, lng: 14.42607,
             desc: ['Comprehensive renovation and restoration of classic Porsche models', 'Precise assembly of mechanical parts and components', 'Diagnostics and regeneration of unique components'],
             photos: ['./reincarnation_1.jpg', './reincarnation_2.jpg']
         },
         de: {title: 'Junior-Motormechaniker', company: 'REIN-CAR-NATION', period: 'Oktober 2017 – Februar 2018',
             iframe: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1842.3354606126536!2d14.426069083415818!3d53.41471692897199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47aa0edf3ab79ef1%3A0x3dcca684f13df971!2sReincarnation!5e1!3m2!1sde!2spl!4v1771164088542!5m2!1sde!2spl',
-            lat: 53.41472, lng: 14.42607,
             desc: ['Umfassende Renovierung und Restaurierung klassischer Porsche-Modelle', 'Präzise Montage mechanischer Teile und Komponenten', 'Diagnostik und Regeneration einzigartiger Komponenten'],
             photos: ['./reincarnation_1.jpg', './reincarnation_2.jpg']
         }
@@ -842,19 +820,16 @@ const jobs = {
     hiperglazur: {
         pl: {title: 'Doradca klienta', company: 'HIPER-GLAZUR', period: 'Kwiecień 2016 – Wrzesień 2017',
             iframe: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1841.8911606285665!2d14.50880906436754!3d53.42497254082794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47aa092c967e47f1%3A0xe2fa82662f272d5f!2sHiper!5e1!3m2!1spl!2spl!4v1771164154842!5m2!1spl!2spl',
-            lat: 53.42497, lng: 14.50881,
             desc: ['Profesjonalne doradztwo techniczne w zakresie chemii budowlanej', 'Obsługa specjalistycznych urządzeń do mieszania farb i tynków', 'Zarządzanie stanami magazynowymi i logistyką dostaw'],
             photos: ['./hiperglazur_1.jpg', './hiperglazur_2.jpg']
         },
         en: {title: 'Customer advisor', company: 'HIPER-GLAZUR', period: 'April 2016 – September 2017',
             iframe: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1841.8911606285665!2d14.50880906436754!3d53.42497254082794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47aa092c967e47f1%3A0xe2fa82662f272d5f!2sHiper!5e1!3m2!1sen!2spl!4v1771164154842!5m2!1sen!2spl',
-            lat: 53.42497, lng: 14.50881,
             desc: ['Professional technical consulting in the field of construction chemicals', 'Operation of specialized equipment for mixing paints and plasters', 'Inventory management and delivery logistics'],
             photos: ['./hiperglazur_1.jpg', './hiperglazur_2.jpg']
         },
         de: {title: 'Kundenberater', company: 'HIPER-GLAZUR', period: 'April 2016 – September 2017',
             iframe: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1841.8911606285665!2d14.50880906436754!3d53.42497254082794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47aa092c967e47f1%3A0xe2fa82662f272d5f!2sHiper!5e1!3m2!1sde!2spl!4v1771164154842!5m2!1sde!2spl',
-            lat: 53.42497, lng: 14.50881,
             desc: ['Professionelle technische Beratung im Bereich Bauchemie', 'Bedienung spezialisierter Geräte zum Mischen von Farben und Putzen', 'Bestandsverwaltung und Lieferlogistik'],
             photos: ['./hiperglazur_1.jpg', './hiperglazur_2.jpg']
         }
@@ -862,19 +837,16 @@ const jobs = {
     markona: {
         pl: {title: 'Zbrojarz - cieśla szalunkowy', company: 'MARKONA AB', period: 'Luty 2014 – Luty 2016',
             iframe: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d638.0933761128283!2d17.12256748805334!3d59.64436739325963!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465e51d9229710a5%3A0xc9b7d5e9ded0f1ba!2sMarkona!5e1!3m2!1spl!2spl!4v1771164231573!5m2!1spl!2spl',
-            lat: 59.64437, lng: 17.12257,
             desc: ['Wykonawstwo konstrukcji żelbetowych zgodnie z normami', 'Montaż systemów szalunkowych na podstawie rys. technicznego', 'Obsługa specjalistycznego sprzętu budowlanego'],
             photos: ['./markona_1.jpg', './markona_2.jpg']
         },
         en: {title: 'Reinforcement worker - formwork carpenter', company: 'MARKONA AB', period: 'February 2014 – February 2016',
             iframe: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d638.0933761128283!2d17.12256748805334!3d59.64436739325963!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465e51d9229710a5%3A0xc9b7d5e9ded0f1ba!2sMarkona!5e1!3m2!1sen!2spl!4v1771164231573!5m2!1sen!2spl',
-            lat: 59.64437, lng: 17.12257,
             desc: ['Construction of reinforced concrete structures in accordance with standards', 'Assembly of formwork systems based on technical drawings', 'Operation of specialized construction equipment'],
             photos: ['./markona_1.jpg', './markona_2.jpg']
         },
         de: {title: 'Bewehrungsarbeiter - Schalungszimmermann', company: 'MARKONA AB', period: 'Februar 2014 – Februar 2016',
             iframe: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d638.0933761128283!2d17.12256748805334!3d59.64436739325963!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465e51d9229710a5%3A0xc9b7d5e9ded0f1ba!2sMarkona!5e1!3m2!1sde!2spl!4v1771164231573!5m2!1sde!2spl',
-            lat: 59.64437, lng: 17.12257,
             desc: ['Bau von Stahlbetonkonstruktionen nach Normen', 'Montage von Schalungssystemen basierend auf technischen Zeichnungen', 'Bedienung spezialisierter Baugeräte'],
             photos: ['./markona_1.jpg', './markona_2.jpg']
         }
@@ -882,24 +854,31 @@ const jobs = {
     kadrzynski: {
         pl: {title: 'Mechanik', company: 'KADRZYŃSKI', period: 'Styczeń 2012 – Grudzień 2013',
             iframe: 'https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d149.2367063095855!2d14.533951389112437!3d53.44009952884281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1spl!2spl!4v1771164460415!5m2!1spl!2spl',
-            lat: 53.44010, lng: 14.53395,
             desc: ['Serwis i konserwacja rowerów wszystkich typów', 'Montaż oraz przygotowywanie sprzętu do sprzedaży'],
             photos: ['./kadrzynski_1.jpg', './kadrzynski_2.jpg']
         },
         en: {title: 'Mechanic', company: 'KADRZYŃSKI', period: 'January 2012 – December 2013',
             iframe: 'https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d149.2367063095855!2d14.533951389112437!3d53.44009952884281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2spl!4v1771164460415!5m2!1sen!2spl',
-            lat: 53.44010, lng: 14.53395,
             desc: ['Service and maintenance of all types of bicycles', 'Assembly and pre-sale preparation of equipment'],
             photos: ['./kadrzynski_1.jpg', './kadrzynski_2.jpg']
         },
         de: {title: 'Mechaniker', company: 'KADRZYŃSKI', period: 'Januar 2012 – Dezember 2013',
             iframe: 'https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d149.2367063095855!2d14.533951389112437!3d53.44009952884281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sde!2spl!4v1771164460415!5m2!1sde!2spl',
-            lat: 53.44010, lng: 14.53395,
             desc: ['Service und Wartung aller Fahrradtypen', 'Montage und Vorbereitung von Geräten für den Verkauf'],
             photos: ['./kadrzynski_1.jpg', './kadrzynski_2.jpg']
         }
     }
 };
+
+const allPhotos = [
+    './liftra_1.jpg', './liftra_2.jpg',
+    './halogaland_1.jpg', './halogaland_2.jpg',
+    './synkros_1.jpg', './synkros_2.jpg',
+    './reincarnation_1.jpg', './reincarnation_2.jpg',
+    './hiperglazur_1.jpg', './hiperglazur_2.jpg',
+    './markona_1.jpg', './markona_2.jpg',
+    './kadrzynski_1.jpg', './kadrzynski_2.jpg'
+];
 
 let lang = 'pl';
 let photos = [];
@@ -917,6 +896,7 @@ const lightboxImg = document.getElementById('lightboxImg');
 const lightboxClose = document.getElementById('lightboxClose');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
+const galleryLink = document.getElementById('galleryLink');
 
 hamburger.onclick = () => {
     hamburger.classList.toggle('active');
@@ -959,7 +939,6 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
         document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         document.querySelectorAll('.content').forEach(c => c.classList.toggle('hidden', c.dataset.lang !== lang));
-        // Translate all elements with data attributes - but NOT changing innerHTML, only textContent of span/text elements
         document.querySelectorAll('[data-pl]').forEach(el => {
             if (el.tagName === 'SPAN' || el.tagName === 'DIV' && !el.querySelector('svg')) {
                 el.textContent = el.getAttribute('data-' + lang);
@@ -968,29 +947,62 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
     };
 });
 
-function openModal(jobId) {
-    const job = jobs[jobId][lang];
+galleryLink.onclick = () => {
+    openGallery();
+    hamburger.classList.remove('active');
+    sideMenu.classList.remove('active');
+    menuOverlay.classList.remove('active');
+};
+
+function openGallery() {
     const labels = {
-        pl: { loc: 'Lokalizacja', map: 'Zobacz na mapie', resp: 'Zakres obowiązków', gal: 'Galeria zdjęć' },
-        en: { loc: 'Location', map: 'View on Map', resp: 'Responsibilities', gal: 'Photo Gallery' },
-        de: { loc: 'Standort', map: 'Auf Karte anzeigen', resp: 'Verantwortlichkeiten', gal: 'Fotogalerie' }
+        pl: { title: 'Galeria Zdjęć', subtitle: 'Wszystkie zdjęcia z mojej pracy' },
+        en: { title: 'Photo Gallery', subtitle: 'All photos from my work' },
+        de: { title: 'Fotogalerie', subtitle: 'Alle Fotos von meiner Arbeit' }
     };
     const l = labels[lang];
     
-    modalBody.innerHTML = `<div class="modal-title">${job.title}</div>
+    modalBody.innerHTML = `
+        <div class="modal-title">${l.title}</div>
+        <div class="modal-company">${l.subtitle}</div>
+        <div class="modal-gallery">
+            <div class="gallery-grid">
+                ${allPhotos.map((p, i) => `<div class="gallery-thumb" onclick="openLightbox(${i})" style="background:url('${p}') center/cover;cursor:pointer"><span style="background:rgba(0,0,0,0.5);color:white;padding:0.5rem;border-radius:4px">${lang === 'pl' ? 'Kliknij aby powiększyć' : lang === 'de' ? 'Zum Vergrößern klicken' : 'Click to enlarge'}</span></div>`).join('')}
+            </div>
+        </div>`;
+    
+    photos = allPhotos;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function openModal(jobId) {
+    const job = jobs[jobId][lang];
+    const labels = {
+        pl: { loc: 'Lokalizacja', resp: 'Zakres obowiązków', gal: 'Galeria zdjęć' },
+        en: { loc: 'Location', resp: 'Responsibilities', gal: 'Photo Gallery' },
+        de: { loc: 'Standort', resp: 'Verantwortlichkeiten', gal: 'Fotogalerie' }
+    };
+    const l = labels[lang];
+    
+    modalBody.innerHTML = `
+        <div class="modal-title">${job.title}</div>
         <div class="modal-company">${job.company}</div>
         <div class="modal-meta">${job.period}</div>
-        <div class="modal-location"><h3>${l.loc}</h3>
-        <iframe class="map-preview" src="${job.iframe}" frameborder="0"></iframe>
-        <a href="https://www.google.com/maps/search/?api=1&query=${job.lat},${job.lng}" target="_blank" class="map-link">
-        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-        ${l.map}</a></div>
-        <div class="modal-description"><h3>${l.resp}</h3><ul>
-        ${job.desc.map(d => `<li>${d}</li>`).join('')}
-        </ul></div>
-        <div class="modal-gallery"><h3>${l.gal}</h3><div class="gallery-grid">
-        ${job.photos.map((p, i) => `<div class="gallery-thumb" onclick="openLightbox(${i})" style="background:url('${p}') center/cover;cursor:pointer"><span style="background:rgba(0,0,0,0.5);color:white;padding:0.5rem;border-radius:4px">${lang === 'pl' ? 'Kliknij aby powiększyć' : lang === 'de' ? 'Zum Vergrößern klicken' : 'Click to enlarge'}</span></div>`).join('')}
-        </div></div>`;
+        <div class="modal-location">
+            <h3>${l.loc}</h3>
+            <iframe class="map-preview" src="${job.iframe}" frameborder="0"></iframe>
+        </div>
+        <div class="modal-description">
+            <h3>${l.resp}</h3>
+            <ul>${job.desc.map(d => `<li>${d}</li>`).join('')}</ul>
+        </div>
+        <div class="modal-gallery">
+            <h3>${l.gal}</h3>
+            <div class="gallery-grid">
+                ${job.photos.map((p, i) => `<div class="gallery-thumb" onclick="openLightbox(${i})" style="background:url('${p}') center/cover;cursor:pointer"><span style="background:rgba(0,0,0,0.5);color:white;padding:0.5rem;border-radius:4px">${lang === 'pl' ? 'Kliknij aby powiększyć' : lang === 'de' ? 'Zum Vergrößern klicken' : 'Click to enlarge'}</span></div>`).join('')}
+            </div>
+        </div>`;
     
     photos = job.photos;
     modal.classList.add('active');
@@ -1036,7 +1048,7 @@ document.querySelectorAll('.job').forEach(job => {
 document.onkeydown = e => {
     if (e.key === 'Escape') {
         if (lightbox.classList.contains('active')) closeLightbox();
-        else closeModal();
+        else if (modal.classList.contains('active')) closeModal();
     }
     if (lightbox.classList.contains('active')) {
         if (e.key === 'ArrowLeft') showPrev();
