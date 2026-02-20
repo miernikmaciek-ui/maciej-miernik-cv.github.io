@@ -6,6 +6,7 @@
     <title>Maciej Miernik - CV</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
     <style>
         :root {
             --bg: #ffffff;
@@ -744,7 +745,6 @@
             <button class="lightbox-nav lightbox-next" id="nextBtn">›</button>
         </div>
     </div>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
     <script>
 const jobs = {
     liftra: {
@@ -954,16 +954,7 @@ galleryLink.onclick = () => {
 };
 
 function openGallery() {
-    const labels = {
-        pl: { title: 'Galeria Zdjęć', subtitle: 'Wszystkie zdjęcia z mojej pracy' },
-        en: { title: 'Photo Gallery', subtitle: 'All photos from my work' },
-        de: { title: 'Fotogalerie', subtitle: 'Alle Fotos von meiner Arbeit' }
-    };
-    const l = labels[lang];
-
     modalBody.innerHTML = `
-        <div class="modal-title">${l.title}</div>
-        <div class="modal-company">${l.subtitle}</div>
         <div class="modal-gallery">
             <div class="gallery-grid">
                 ${allPhotos.map((p, i) => `<div class="gallery-thumb" onclick="openLightbox(${i})" style="background:url('${p}') center/cover;cursor:pointer"><span style="background:rgba(0,0,0,0.5);color:white;padding:0.5rem;border-radius:4px">${lang === 'pl' ? 'Kliknij aby powiększyć' : lang === 'de' ? 'Zum Vergrößern klicken' : 'Click to enlarge'}</span></div>`).join('')}
@@ -1055,7 +1046,8 @@ document.onkeydown = e => {
     }
 };
 
-// ── ZMIANA 2: Leaflet – działająca mapa z 7 pinezkami (zamiast broken Google Maps iframe) ──
+// ── ZMIANA 2: Leaflet – działająca mapa z 7 pinezkami ──
+window.addEventListener('load', function() {
 const workLocations = [
     { lat: 53.458284, lng: 14.586271, name: 'LIFTRA',                place: 'Szczecin, PL' },
     { lat: 68.949558, lng: 15.654064, name: 'HÅLOGALAND ELEMENT AS', place: 'Risøyhamn, NO' },
@@ -1094,9 +1086,8 @@ workLocations.forEach(loc => {
 const bounds = L.latLngBounds(workLocations.map(l => [l.lat, l.lng]));
 workMap.fitBounds(bounds, { padding: [40, 40] });
 
-// Kopiuj mapę do placeholder'ów EN i DE po przełączeniu języka
-// (Leaflet może renderować tylko w jednym #id na raz — clone nie działa,
-// dlatego przy przełączeniu języka przepinamy workmap do właściwego kontenera)
+}); // end window load
+
 function moveMapToActiveLang() {
     const containerId = lang === 'pl' ? 'workmap'
                       : lang === 'en' ? 'workmap-en'
